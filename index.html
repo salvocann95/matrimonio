@@ -13,9 +13,9 @@
 
   <style>
     :root {
-      --deep: #78add4;	/*Colore dei titoli*/
+      --deep: #78add4;	/*Colore dei titoli e dei riquadri cliccabili*/
       --pale: #e9eff0;	/*Colore di sfondo della sezione lista nozze*/
-      --ink: #191970;	
+      --ink: #191970;	/*Colore della selezione delle risposte dal menù a tendina*/
       --muted: #191970;	/*Colore del testo secondario descrittivo*/
       --paper: #fffefa;	/*Colore di sfondo del riquadro dell'iban*/
     }
@@ -96,7 +96,7 @@
       font-size: 10px;
       letter-spacing: 3px;
       text-transform: uppercase;
-      color: #78add4;	/*Colore della scritte piccole maiuscole tipo IL NOSTRO MATRIMONIO o LISTA NOZZE*/
+      color: #191970;	/*Colore della scritte piccole maiuscole tipo IL NOSTRO MATRIMONIO o LISTA NOZZE*/
     }
 
     h1, h2, h3 {
@@ -128,12 +128,12 @@
 
     .hero p {
       font: 19px/1.7 'Playfair Display', Georgia, serif;
-      color: #191970;	/*Colore del testo del paragrafo sotto al titolo Salvatore E Alessia*/
+      color: #78add4;	/*Colore del testo del paragrafo sotto al titolo Salvatore E Alessia*/
       margin: 15px auto 25px;
     }
 
     .ornament {
-      color: #a7d5f6;	/*Colore degli ornamenti sotto al testo Salvatore E Alessia in grande*/
+      color: #191970;	/*Colore degli ornamenti sotto al testo Salvatore E Alessia in grande*/
       letter-spacing: 8px;
       margin: 20px;
     }
@@ -212,7 +212,7 @@
 
     .stop {
       background: #f8f7f1;
-      border: 1px solid #fae186;	/*Colore del bordo dei riquadri delle tappe*/
+      border: 1px solid #a7d5f6;	/*Colore del bordo dei riquadri delle tappe*/
     }
 
     .stop img {
@@ -252,7 +252,7 @@
       max-width: 600px;
       margin: 30px auto 0;
       background: var(--paper);
-      border: 1px solid #fae186;	/*Colore del bordo del riquadro dell'iban*/
+      border: 1px solid #a7d5f6;	/*Colore del bordo del riquadro dell'iban*/
       padding: 32px;
       text-align: center;
     }
@@ -291,7 +291,7 @@
       margin: 32px auto 0;
       padding: 28px;
       background: #f8f7f1;
-      border: 1px solid #fae186;	/*Colore del riquadro relatico alla sezione di conferma presenza*/
+      border: 1px solid #a7d5f6;	/*Colore del riquadro relatico alla sezione di conferma presenza*/
       text-align: left;
     }
 
@@ -458,7 +458,7 @@
     <div class="hero-inner">
       <div class="kicker">Il nostro matrimonio</div>
       <h1>Salvatore <em>&amp;</em><br>Alessia</h1>
-      <div class="ornament">✦ ─ ✦ ─ ✦</div>
+      <div class="ornament">♡ ─ ♡ ─ ♡</div>
       <p>Un giorno speciale, una nuova avventura insieme.<br>Ci fa felici avervi accanto.</p>
       <span style="display:inline-flex; gap:12px; flex-wrap:wrap; justify-content:center">
         <a class="btn" href="#regalo">Partecipa al regalo</a>
@@ -476,13 +476,13 @@
       
       <div class="giftbox">
         <div class="eyebrow">Coordinate bancarie</div>
-        <div class="holder">Salvatore &amp; Alessia</div>
+		<br><br>
         <div class="eyebrow">IBAN</div>
         <div class="iban" id="iban">IT60 X054 2811 1010 0000 0123 456</div>
         <button class="btn" id="copy" type="button">Copia IBAN</button>
         
-        <p style="font-size:11px; color:#191970; margin:20px 0 5px">Causale suggerita</p>
-        <strong style="font-size:13px; color:#191970; font-weight:500">Regalo di nozze – Salvatore &amp; Alessia</strong>
+        <p style="font-size:14px; color:#191970; margin:20px 0 5px">Intestatario: Salvatore Cannata</p>
+        <strong style="font-size:14px; color:#191970; font-weight:500">Causale suggerita: Regalo di nozze – Salvatore &amp; Alessia</strong>
         <p class="hint">DEMO: intestatari e IBAN sono inventati. Non effettuare pagamenti usando questi dati.</p>
       </div>
     </div>
@@ -514,8 +514,6 @@
           </div>
         </article>
       </div>
-
-      <p class="hint">Le tappe e i testi sono indicativi e possono essere aggiornati con il vostro itinerario definitivo.</p>
     </div>
   </section>
 
@@ -578,7 +576,7 @@
         </div>
         
         <div class="status" id="status" aria-live="polite"></div>
-        <p class="hint">Le risposte vengono inviate direttamente agli sposi: non verrà aperto alcun programma di posta sul tuo dispositivo.</p>
+        <p class="hint">Le risposte vengono inviate direttamente agli sposi.</p>
       </form>
     </div>
   </section>
