@@ -13,11 +13,26 @@
 
   <style>
     :root {
-      --deep: #78add4;	/*Colore dei titoli e dei riquadri cliccabili*/
-      --pale: #fffefa;	/*Colore di sfondo della sezione lista nozze*/
-      --ink: #191970;	/*Colore della selezione delle risposte dal menù a tendina*/
-      --muted: #191970;	/*Colore del testo secondario descrittivo*/
-      --paper: #f8f7f1;	/*Colore di sfondo del riquadro dell'iban*/
+      /* ===== Palette colori del sito — cambia qui per aggiornare tutto il sito ===== */
+
+      /* Colori "forti" (testi ed elementi in risalto) */
+      --deep: #78add4;         /* Blu principale: titoli, bottoni, testo "Salvatore & Alessia" */
+      --ink: #191970;          /* Blu notte: quasi tutti i testi/etichette/bordi in risalto */
+      --muted: #191970;        /* Blu notte: testo secondario/descrittivo (uguale a --ink) */
+      --accent: #a7d5f6;       /* Azzurro chiaro: bordi e sfondi di risalto (tappe, tag, form, box regalo) */
+      --success: #3f7d52;      /* Verde: spunta "Risposta inoltrata" dopo l'invio del modulo */
+      --nav-link: #5d7075;     /* Grigio-azzurro: link del menù di navigazione */
+
+      /* Colori di sfondo */
+      --bg: #f2f3ef;           /* Sfondo generale della pagina */
+      --pale: #fffefa;         /* Bianco caldo: sfondo di schede/box chiari (tappe, IBAN, campi form) */
+      --paper: #f8f7f1;        /* Beige chiaro: sfondo "carta" (riquadro IBAN, form RSVP) */
+      --sky: #ebf7fd;          /* Azzurro pallido: sfondo sezione "Il viaggio" e sfumatura dell'header */
+      --frost: #e9eff0;        /* Grigio ghiaccio: testo del footer */
+
+      /* Bordi */
+      --border-light: #d9dedb; /* Grigio chiaro: bordo dei campi dei moduli */
+      --border-faint: #e5e5dc; /* Grigio molto tenue: bordo interno del box IBAN */
     }
 
     * {
@@ -30,7 +45,7 @@
 
     body {
       margin: 0;
-      background: #f2f3ef;
+      background: var(--bg);
       color: var(--ink);
       font-family: 'DM Sans', Arial, sans-serif;
     }
@@ -40,7 +55,7 @@
       position: sticky;
       top: 0;
       z-index: 5;
-      background: #fffefaee;
+      background: color-mix(in srgb, var(--pale) 93%, transparent);
       backdrop-filter: blur(10px);
       border-bottom: 1px solid #e7e6dc;
     }
@@ -73,7 +88,7 @@
       font-size: 11px;
       letter-spacing: .8px;
       text-transform: uppercase;
-      color: #5d7075;
+      color: var(--nav-link);
       text-decoration: none;
     }
 
@@ -84,7 +99,7 @@
       place-items: center;
       text-align: center;
       padding: 76px 22px;
-      background: linear-gradient(180deg, #e9eff0e8, #ebf7fd), url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1800&q=85') center/cover;
+      background: linear-gradient(180deg, color-mix(in srgb, var(--frost) 91%, transparent), var(--sky)), url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1800&q=85') center/cover;
     }
 
     .hero-inner {
@@ -96,7 +111,7 @@
       font-size: 10px;
       letter-spacing: 3px;
       text-transform: uppercase;
-      color: #191970;	/*Colore della scritte piccole maiuscole tipo IL NOSTRO MATRIMONIO o LISTA NOZZE*/
+      color: var(--ink);
     }
 
     h1, h2, h3 {
@@ -112,7 +127,7 @@
     }
 
     h1 em {
-      color: #78add4;	/*Colore della E del testo Salvatore E Alessia in grande*/
+      color: var(--deep);
       font-weight: 400;
     }
 
@@ -128,12 +143,12 @@
 
     .hero p {
       font: 19px/1.7 'Playfair Display', Georgia, serif;
-      color: #78add4;	/*Colore del testo del paragrafo sotto al titolo Salvatore E Alessia*/
+      color: var(--deep);
       margin: 15px auto 25px;
     }
 
     .ornament {
-      color: #191970;	/*Colore degli ornamenti sotto al testo Salvatore E Alessia in grande*/
+      color: var(--ink);
       letter-spacing: 8px;
       margin: 20px;
     }
@@ -168,7 +183,7 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      color: #3f7d52;
+      color: var(--success);
       font: 600 13px 'DM Sans', sans-serif;
     }
 
@@ -200,7 +215,7 @@
 
     /* Section: Il Viaggio */
     .journey {
-      background: #ebf7fd;
+      background: var(--sky);
     }
 
     .route {
@@ -211,8 +226,8 @@
     }
 
     .stop {
-      background: #fffefa;
-      border: 1px solid #a7d5f6;	/*Colore del bordo dei riquadri delle tappe*/
+      background: var(--pale);
+      border: 1px solid var(--accent);
     }
 
     .stop img {
@@ -235,8 +250,8 @@
 
     .tag {
       display: inline-block;
-      color: #191970;	/*Colore del testo delle etichette della prima tappa e seconda tappa*/
-      background: #a7d5f6;	/*Colore dello sfonfo dei riguadri relativi alla prima tappa e seconda tappa*/
+      color: var(--ink);
+      background: var(--accent);
       padding: 6px 10px;
       font-size: 9px;
       letter-spacing: 1.5px;
@@ -252,7 +267,7 @@
       max-width: 600px;
       margin: 30px auto 0;
       background: var(--paper);
-      border: 1px solid #a7d5f6;	/*Colore del bordo del riquadro dell'iban*/
+      border: 1px solid var(--accent);
       padding: 32px;
       text-align: center;
     }
@@ -267,31 +282,31 @@
       font: 500 15px 'DM Sans', sans-serif;
       letter-spacing: .7px;
       overflow-wrap: anywhere;
-      background: #fffefa;
-      border: 1px solid #e5e5dc;
+      background: var(--pale);
+      border: 1px solid var(--border-faint);
       padding: 16px;
       margin: 10px 0 16px;
-      color: #191970;	/*Colore del testo dell'IBAN*/
+      color: var(--ink);
     }
 
     .hint {
       font-size: 11px;
       line-height: 1.6;
-      color: #191970;	/*Colore del testo della nota relativo alle risposte nel riquadro delle presenze*/
+      color: var(--ink);
       margin: 16px auto 0;
     }
 
     /* Section: RSVP */
     .rsvp {
-      background: #fffefa;
+      background: var(--pale);
     }
 
     .form {
       max-width: 650px;
       margin: 32px auto 0;
       padding: 28px;
-      background: #f8f7f1;
-      border: 1px solid #a7d5f6;	/*Colore del riquadro relatico alla sezione di conferma presenza*/
+      background: var(--paper);
+      border: 1px solid var(--accent);
       text-align: left;
     }
 
@@ -309,7 +324,7 @@
       display: block;
       font-size: 11px;
       letter-spacing: .6px;
-      color: #191970;	/*Colore delle etichette dei campi Nome, Telefono, ecc*/
+      color: var(--ink);
       margin-bottom: 7px;
     }
 
@@ -318,8 +333,8 @@
     .field textarea {
       width: 100%;
       padding: 12px;
-      border: 1px solid #d9dedb;
-      background: #fffefa;
+      border: 1px solid var(--border-light);
+      background: var(--pale);
       color: var(--ink);
       font: 13px 'DM Sans', sans-serif;
       border-radius: 2px;
@@ -332,7 +347,7 @@
 
     .field small {
       display: block;
-      color: #191970;	/*Testo piccolo di aiuto sotto ai campi da compilare*/	
+      color: var(--ink);
       font-size: 10px;
       line-height: 1.5;
       margin-top: 6px;
@@ -350,8 +365,8 @@
     }
 
     .guestbox {
-      border: 1px solid #191970;	
-      background: #fffefa;
+      border: 1px solid var(--ink);
+      background: var(--pale);
       padding: 16px;
       margin-bottom: 14px;
     }
@@ -360,7 +375,7 @@
       font-size: 11px;
       letter-spacing: 1px;
       text-transform: uppercase;
-      color: #191970;	/*Colore del testo relativo ai Partecipanti*/
+      color: var(--ink);
       margin-bottom: 10px;
       display: block;
     }
@@ -370,8 +385,8 @@
     .guestbox textarea {
       width: 100%;
       padding: 11px;
-      border: 1px solid #d9dedb;
-      background: #fffefa;
+      border: 1px solid var(--border-light);
+      background: var(--pale);
       color: var(--ink);
       font: 13px 'DM Sans', sans-serif;
       border-radius: 2px;
@@ -389,10 +404,44 @@
       margin-bottom: 0;
     }
 
+    .subfield {
+      margin: -2px 0 10px;
+      padding: 10px 12px;
+      background: var(--paper);
+      border: 1px solid var(--border-light);
+    }
+
+    .subfield .glabel {
+      display: block;
+      font-size: 11px;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+
+    .radiorow {
+      display: flex;
+      gap: 18px;
+    }
+
+    .radiorow label {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: var(--ink);
+      cursor: pointer;
+    }
+
+    .radiorow input[type="radio"] {
+      width: auto;
+      margin: 0;
+      cursor: pointer;
+    }
+
     /* Footer */
     footer {
       background: var(--deep);
-      color: #e9eff0;
+      color: var(--frost);
       text-align: center;
       padding: 28px 18px;
       font-size: 10px;
@@ -444,7 +493,7 @@
   <!-- Navigation Bar -->
   <nav>
     <div class="navin">
-      <a class="brand" href="#">Salvatore <span style="color:#a7d5f6">&amp;</span> Alessia</a>
+      <a class="brand" href="#">Salvatore <span style="color:var(--accent)">&amp;</span> Alessia</a>
       <div class="links">
         <a href="#regalo">Lista nozze</a>
         <a href="#viaggio">Il viaggio</a>
@@ -479,8 +528,8 @@
         <div class="iban" id="iban">IT60 X054 2811 1010 0000 0123 456</div>
         <button class="btn" id="copy" type="button">Copia IBAN</button>
         
-        <p style="font-size:14px; color:#191970; margin:20px 0 5px">Intestatario:<br><b>Salvatore</b></p>
-		<p style="font-size:14px; color:#191970; margin:20px 0 5px">Causale suggerita:<br><b>Regalo di nozze – Salvatore &amp; Alessia</b></p>
+        <p style="font-size:14px; color:var(--ink); margin:20px 0 5px">Intestatario:<br><b>Salvatore</b></p>
+		<p style="font-size:14px; color:var(--ink); margin:20px 0 5px">Causale suggerita:<br><b>Regalo di nozze – Salvatore &amp; Alessia</b></p>
       </div>
     </div>
   </section>
@@ -571,6 +620,14 @@
           <small>Indica nome e cognome, tipo di menù ed eventuali allergie/intolleranze per ciascun partecipante.</small>
         </div>
 
+        <div class="field hidden" id="transportField">
+          <label>Avrai bisogno di un mezzo di trasporto per raggiungere la chiesa e il locale?</label>
+          <div class="radiorow">
+            <label><input type="radio" name="transport" value="Sì"> Sì</label>
+            <label><input type="radio" name="transport" value="No"> No</label>
+          </div>
+        </div>
+
         <div class="field">
           <label for="notes">Altre comunicazioni (facoltativo)</label>
           <textarea id="notes" name="notes" placeholder="Un messaggio per gli sposi..."></textarea>
@@ -614,6 +671,7 @@
     const guests = document.getElementById('guests');
     const guestDetailsField = document.getElementById('guestDetailsField');
     const guestDetails = document.getElementById('guestDetails');
+    const transportField = document.getElementById('transportField');
 
     function renderGuestDetails(n) {
       guestDetails.innerHTML = '';
@@ -623,22 +681,43 @@
         box.innerHTML = `
           <span class="gtitle">Partecipante ${i}</span>
           <input type="text" name="guest_name_${i}" placeholder="Nome e cognome" required>
-          <select name="guest_menu_${i}" required>
+          <select name="guest_menu_${i}" required data-guest="${i}">
             <option value="">Seleziona il menù</option>
             <option value="Menù adulto">Menù adulto</option>
             <option value="Menù bambino">Menù bambino</option>
-            <option value="Infante (0-2 anni)">Infante (0-2 anni)</option>
+            <option value="Neonato">Neonato</option>
           </select>
+          <div class="subfield hidden" id="seggiolone_field_${i}">
+            <span class="glabel">Seggiolone</span>
+            <div class="radiorow">
+              <label><input type="radio" name="guest_seggiolone_${i}" value="Sì"> Sì</label>
+              <label><input type="radio" name="guest_seggiolone_${i}" value="No"> No</label>
+            </div>
+          </div>
           <textarea name="guest_allergy_${i}" placeholder="Allergie, intolleranze o esigenze alimentari (facoltativo)"></textarea>
         `;
         guestDetails.appendChild(box);
       }
     }
 
+    // Mostra/nasconde il campo seggiolone in base al menù scelto per ciascun partecipante
+    guestDetails.addEventListener('change', e => {
+      const select = e.target.closest('select[name^="guest_menu_"]');
+      if (!select) return;
+      const i = select.dataset.guest;
+      const seggioloneField = document.getElementById('seggiolone_field_' + i);
+      const needsSeggiolone = select.value === 'Menù bambino' || select.value === 'Neonato';
+      seggioloneField.classList.toggle('hidden', !needsSeggiolone);
+      if (!needsSeggiolone) {
+        seggioloneField.querySelectorAll('input[type="radio"]').forEach(r => r.checked = false);
+      }
+    });
+
     function syncGuestUI() {
       const yes = attendance.value.startsWith('Si');
       guestsField.classList.toggle('hidden', !yes);
       guestDetailsField.classList.toggle('hidden', !yes);
+      transportField.classList.toggle('hidden', !yes);
       guests.required = yes;
 
       if (yes) {
@@ -666,14 +745,17 @@
       
       const guestLines = [];
       for (let i = 1; i <= n; i++) {
-        guestLines.push(`  ${i}. ${f.get('guest_name_' + i) || ''} - Menù: ${f.get('guest_menu_' + i) || 'Non indicato'} - Allergie/intolleranze: ${f.get('guest_allergy_' + i) || 'Non indicate'}`);
+        const menu = f.get('guest_menu_' + i) || 'Non indicato';
+        const needsSeggiolone = menu === 'Menù bambino' || menu === 'Neonato';
+        const seggiolone = needsSeggiolone ? (f.get('guest_seggiolone_' + i) || 'Non indicato') : null;
+        guestLines.push(`  ${i}. ${f.get('guest_name_' + i) || ''} - Menù: ${menu}${needsSeggiolone ? ' - Seggiolone: ' + seggiolone : ''} - Allergie/intolleranze: ${f.get('guest_allergy_' + i) || 'Non indicate'}`);
       }
 
       const riepilogo = [
         'Nome: ' + f.get('name'),
         'Telefono: ' + f.get('phone'),
         'Risposta: ' + f.get('attendance'),
-        ...(yes ? ['Numero partecipanti: ' + f.get('guests'), 'Elenco partecipanti:', ...guestLines] : []),
+        ...(yes ? ['Numero partecipanti: ' + f.get('guests'), 'Elenco partecipanti:', ...guestLines, 'Mezzo di trasporto necessario: ' + (f.get('transport') || 'Non indicato')] : []),
         'Altre comunicazioni: ' + (f.get('notes') || 'Nessuna')
       ].join('\n');
 
