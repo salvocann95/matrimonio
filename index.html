@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#e9eff0">
   <title>Salvatore &amp; Alessia | Il nostro matrimonio</title>
+  <script>
+    if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
+    if (location.hash) { history.replaceState(null, '', location.pathname + location.search); }
+  </script>
 
   <!-- Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -648,6 +652,9 @@
 
     attendance.addEventListener('change', syncGuestUI);
     guests.addEventListener('change', () => renderGuestDetails(parseInt(guests.value, 10)));
+
+    // Forza sempre lo scroll in cima al ricaricamento della pagina
+    window.addEventListener('load', () => window.scrollTo(0, 0));
 
     // AJAX Form Submission
     const RSVP_EMAIL = 'salvo.cannata95@gmail.com';
