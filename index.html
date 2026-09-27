@@ -407,7 +407,7 @@
     .subfield {
       margin: -2px 0 10px;
       padding: 10px 12px;
-      background: var(--paper);
+      background: var(--pale);
       border: 1px solid var(--border-light);
     }
 
@@ -746,12 +746,12 @@
       // Ricostruisce l'invio con etichette in italiano, una riga per ciascuna informazione:
       // niente più blocco unico di testo, ma una tabella ordinata e leggibile nella mail.
       const mail = new FormData();
-      mail.set('Nome e cognome', raw.get('name'));
+      mail.set('Nome e Cognome', raw.get('name'));
       mail.set('Telefono', raw.get('phone'));
       mail.set('Partecipazione', yes ? 'Sì, ci sarà' : 'No, non potrà esserci');
 
       if (yes) {
-        mail.set('Numero partecipanti', raw.get('guests'));
+        mail.set('Numero di partecipanti', raw.get('guests'));
         for (let i = 1; i <= n; i++) {
           const menu = raw.get('guest_menu_' + i) || 'Non indicato';
           const needsSeggiolone = menu === 'Menù bambino' || menu === 'Neonato';
