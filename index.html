@@ -521,14 +521,14 @@
     <div class="wrap center">
       <div class="eyebrow">La nostra lista nozze</div>
       <h2>Un pensiero per il nostro viaggio</h2>
-      <p class="intro">La vostra presenza sarà il regalo più bello ma se desiderate contribuire al nostro viaggio di nozze, qui sotto troverete le coordinate bancarie per un bonifico diretto.</p>
+      <p class="intro">La vostra presenza sarà il regalo più bello, ma se desiderate contribuire al nostro viaggio di nozze, qui sotto troverete le coordinate bancarie per un bonifico diretto.</p>
       
       <div class="giftbox">
         <div class="eyebrow"><b>IBAN</b></div>
-        <div class="iban" id="iban">IT60 X054 2811 1010 0000 0123 456</div>
+        <div class="iban" id="iban">IT55 S030 6916 5201 0000 0017 048</div>
         <button class="btn" id="copy" type="button">Copia IBAN</button>
         
-        <p style="font-size:14px; color:var(--ink); margin:20px 0 5px">Intestatario:<br><b>Salvatore</b></p>
+        <p style="font-size:14px; color:var(--ink); margin:20px 0 5px">Intestatario:<br><b>Salvatore Cannata</b></p>
 		<p style="font-size:14px; color:var(--ink); margin:20px 0 5px">Causale suggerita:<br><b>Regalo di nozze – Salvatore &amp; Alessia</b></p>
       </div>
     </div>
@@ -739,31 +739,39 @@
       const check = document.getElementById('checkmark');
       const status = document.getElementById('status');
       
-      const f = new FormData(e.target);
-      const yes = f.get('attendance').startsWith('Si');
-      const n = yes ? parseInt(f.get('guests') || '1', 10) : 0;
-      
-      const guestLines = [];
-      for (let i = 1; i <= n; i++) {
-        const menu = f.get('guest_menu_' + i) || 'Non indicato';
-        const needsSeggiolone = menu === 'Menù bambino' || menu === 'Neonato';
-        const seggiolone = needsSeggiolone ? (f.get('guest_seggiolone_' + i) || 'Non indicato') : null;
-        guestLines.push(`  ${i}. ${f.get('guest_name_' + i) || ''} - Menù: ${menu}${needsSeggiolone ? ' - Seggiolone: ' + seggiolone : ''} - Allergie/intolleranze: ${f.get('guest_allergy_' + i) || 'Non indicate'}`);
+      const raw = new FormData(e.target);
+      const yes = raw.get('attendance').startsWith('Si');
+      const n = yes ? parseInt(raw.get('guests') || '1', 10) : 0;
+
+      // Ricostruisce l'invio con etichette in italiano, una riga per ciascuna informazione:
+      // niente più blocco unico di testo, ma una tabella ordinata e leggibile nella mail.
+      const mail = new FormData();
+      mail.set('Nome e cognome', raw.get('name'));
+      mail.set('Telefono', raw.get('phone'));
+      mail.set('Partecipazione', yes ? 'Sì, ci sarà' : 'No, non potrà esserci');
+
+      if (yes) {
+        mail.set('Numero partecipanti', raw.get('guests'));
+        for (let i = 1; i <= n; i++) {
+          const menu = raw.get('guest_menu_' + i) || 'Non indicato';
+          const needsSeggiolone = menu === 'Menù bambino' || menu === 'Neonato';
+          const label = `Partecipante ${i}`;
+          mail.set(`${label} - Nome`, raw.get('guest_name_' + i) || '');
+          mail.set(`${label} - Menù`, menu);
+          if (needsSeggiolone) {
+            mail.set(`${label} - Seggiolone`, raw.get('guest_seggiolone_' + i) || 'Non indicato');
+          }
+          mail.set(`${label} - Allergie/Intolleranze`, raw.get('guest_allergy_' + i) || 'Nessuna');
+        }
+        mail.set('Mezzo di trasporto necessario', raw.get('transport') || 'Non indicato');
       }
 
-      const riepilogo = [
-        'Nome: ' + f.get('name'),
-        'Telefono: ' + f.get('phone'),
-        'Risposta: ' + f.get('attendance'),
-        ...(yes ? ['Numero partecipanti: ' + f.get('guests'), 'Elenco partecipanti:', ...guestLines, 'Mezzo di trasporto necessario: ' + (f.get('transport') || 'Non indicato')] : []),
-        'Altre comunicazioni: ' + (f.get('notes') || 'Nessuna')
-      ].join('\n');
+      mail.set('Altre comunicazioni', raw.get('notes') || 'Nessuna');
 
-      f.set('Riepilogo completo', riepilogo);
-      f.set('_subject', 'Conferma matrimonio - ' + f.get('name'));
-      f.set('_template', 'table');
-      f.set('_captcha', 'false');
-	  f.set('_cc', 'alessiasalvato96@gmail.com');
+      mail.set('_subject', 'Conferma matrimonio - ' + raw.get('name'));
+      mail.set('_template', 'table');
+      mail.set('_captcha', 'false');
+      mail.set('_cc', 'alessiasalvato96@gmail.com');
 
       btn.disabled = true;
       btn.textContent = 'Invio in corso...';
@@ -773,7 +781,7 @@
         const res = await fetch('https://formsubmit.co/ajax/' + RSVP_EMAIL, {
           method: 'POST',
           headers: { 'Accept': 'application/json' },
-          body: f
+          body: mail
         });
         
         if (!res.ok) throw new Error('invio fallito');
