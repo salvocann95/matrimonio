@@ -4,9 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#e9eff0">
-  <title>Salvatore & Alessia | Il nostro matrimonio</title>
-  
-  <!-- Fonts -->
+  <title>Salvatore &amp; Alessia | Il nostro matrimonio</title>
+
+  <!-- Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
@@ -140,6 +140,7 @@
       margin: 20px;
     }
 
+    /* Buttons & Controls */
     .btn {
       display: inline-block;
       border: 0;
@@ -160,7 +161,24 @@
       color: var(--deep);
     }
 
-    /* Common Layout Styles */
+    .btn:disabled {
+      opacity: .6;
+      cursor: default;
+    }
+
+    .checkmark {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: #3f7d52;
+      font: 600 13px 'DM Sans', sans-serif;
+    }
+
+    .checkmark.hidden {
+      display: none;
+    }
+
+    /* Global Layout Component Classes */
     section {
       padding: 76px 22px;
     }
@@ -182,7 +200,7 @@
       line-height: 1.9;
     }
 
-    /* Journey Section */
+    /* Section: Il Viaggio */
     .journey {
       background: #fffefa;
     }
@@ -227,7 +245,7 @@
       text-transform: uppercase;
     }
 
-    /* Gift Section */
+    /* Section: Lista Nozze */
     .gift {
       background: var(--pale);
     }
@@ -265,7 +283,7 @@
       margin: 16px auto 0;
     }
 
-    /* RSVP Section */
+    /* Section: RSVP */
     .rsvp {
       background: #fffefa;
     }
@@ -391,7 +409,7 @@
       margin-bottom: 7px;
     }
 
-    /* Responsive */
+    /* Responsive Breakpoints */
     @media (max-width: 650px) {
       .navin {
         align-items: flex-start;
@@ -425,10 +443,10 @@
 </head>
 <body>
 
-  <!-- Navigation -->
+  <!-- Navigation Bar -->
   <nav>
     <div class="navin">
-      <a class="brand" href="#">Salvatore <span style="color:#c4ac5e">&</span> Alessia</a>
+      <a class="brand" href="#">Salvatore <span style="color:#c4ac5e">&amp;</span> Alessia</a>
       <div class="links">
         <a href="#regalo">Lista nozze</a>
         <a href="#viaggio">Il viaggio</a>
@@ -437,11 +455,11 @@
     </div>
   </nav>
 
-  <!-- Hero Section -->
+  <!-- Hero Header -->
   <header class="hero">
     <div class="hero-inner">
       <div class="kicker">Il nostro matrimonio</div>
-      <h1>Salvatore <em>&</em><br>Alessia</h1>
+      <h1>Salvatore <em>&amp;</em><br>Alessia</h1>
       <div class="ornament">✦ ─ ✦ ─ ✦</div>
       <p>Un giorno speciale, una nuova avventura insieme.<br>Ci fa felici avervi accanto.</p>
       <span style="display:inline-flex; gap:12px; flex-wrap:wrap; justify-content:center">
@@ -451,18 +469,16 @@
     </div>
   </header>
 
-  <!-- Section: Lista Nozze -->
+  <!-- Lista Nozze Section -->
   <section class="gift" id="regalo">
     <div class="wrap center">
       <div class="eyebrow">La nostra lista nozze</div>
       <h2>Un pensiero per il nostro viaggio</h2>
-      <p class="intro">
-        La vostra presenza sarà il regalo più bello. Se desiderate contribuire al nostro viaggio di nozze, qui trovate le coordinate per un bonifico diretto.
-      </p>
+      <p class="intro">La vostra presenza sarà il regalo più bello. Se desiderate contribuire al nostro viaggio di nozze, qui trovate le coordinate per un bonifico diretto.</p>
       
       <div class="giftbox">
         <div class="eyebrow">Coordinate bancarie</div>
-        <div class="holder">Salvatore Cannata</div>
+        <div class="holder">Salvatore Cannata &amp; Alessia Rossi</div>
         <div class="eyebrow">IBAN</div>
         <div class="iban" id="iban">IT60 X054 2811 1010 0000 0123 456</div>
         <button class="btn" id="copy" type="button">Copia IBAN</button>
@@ -474,15 +490,13 @@
     </div>
   </section>
 
-  <!-- Section: Il Viaggio -->
+  <!-- Il Viaggio Section -->
   <section class="journey" id="viaggio">
     <div class="wrap center">
       <div class="eyebrow">Dopo il nostro sì</div>
       <h2>Il viaggio dei nostri sogni</h2>
-      <p class="intro">
-        Stiamo preparando un'avventura speciale. Qui troverete alcune delle tappe che immaginiamo di vivere: un viaggio fatto di scoperte, paesaggi indimenticabili e ricordi da custodire.
-      </p>
-
+      <p class="intro">Stiamo preparando un'avventura speciale. Qui troverete alcune delle tappe che immaginiamo di vivere: un viaggio fatto di scoperte, paesaggi indimenticabili e ricordi da custodire.</p>
+      
       <div class="route">
         <article class="stop">
           <img src="https://images.unsplash.com/photo-1518391846015-55a9cc003b25?auto=format&fit=crop&w=1000&q=85" onerror="this.src='https://images.unsplash.com/photo-1518391846015-55a9cc003b25?auto=format&fit=crop&w=1000&q=85'" alt="Panorama di New York">
@@ -507,15 +521,13 @@
     </div>
   </section>
 
-  <!-- Section: RSVP -->
+  <!-- RSVP Section -->
   <section class="rsvp" id="rsvp">
     <div class="wrap center">
-      <div class="eyebrow">Ci sarai?</div>
-      <h2>Conferma la tua presenza</h2>
-      <p class="intro">
-        Per aiutarci a organizzare al meglio la giornata, vi chiediamo di compilare il modulo qui sotto. Bastano pochi istanti.
-      </p>
-
+      <div class="eyebrow">Ci sarete?</div>
+      <h2>Conferma la vostra presenza</h2>
+      <p class="intro">Per aiutarci a organizzare al meglio la giornata, vi chiediamo di compilare il modulo qui sotto. Bastano pochi istanti.</p>
+      
       <form class="form" id="rsvpForm">
         <div class="grid">
           <div class="field">
@@ -562,9 +574,13 @@
           <textarea id="notes" name="notes" placeholder="Un messaggio per gli sposi..."></textarea>
         </div>
 
-        <button class="btn" type="submit">Prepara la conferma</button>
+        <div style="display:flex; align-items:center; gap:14px; flex-wrap:wrap">
+          <button class="btn" id="submitBtn" type="submit">Invia risposta</button>
+          <span class="checkmark hidden" id="checkmark">✓ Risposta inoltrata</span>
+        </div>
+        
         <div class="status" id="status" aria-live="polite"></div>
-        <p class="hint">Modulo dimostrativo: il pulsante prepara un messaggio email, ma non invia né salva automaticamente le risposte. Per raccoglierle online va collegato a un servizio di moduli.</p>
+        <p class="hint">Le risposte vengono inviate direttamente agli sposi: non verrà aperto alcun programma di posta sul tuo dispositivo.</p>
       </form>
     </div>
   </section>
@@ -575,9 +591,9 @@
     Con amore · Grazie di cuore
   </footer>
 
-  <!-- JavaScript -->
+  <!-- Script Implementation -->
   <script>
-    // Gestione copia IBAN
+    // Copy IBAN functionality
     const iban = document.getElementById('iban');
     const copy = document.getElementById('copy');
 
@@ -590,7 +606,7 @@
       }
     });
 
-    // Gestione Form RSVP
+    // Dynamic Form Handlers
     const attendance = document.getElementById('attendance');
     const guestsField = document.getElementById('guestsField');
     const guests = document.getElementById('guests');
@@ -633,8 +649,15 @@
     attendance.addEventListener('change', syncGuestUI);
     guests.addEventListener('change', () => renderGuestDetails(parseInt(guests.value, 10)));
 
-    document.getElementById('rsvpForm').addEventListener('submit', e => {
+    // AJAX Form Submission
+    const RSVP_EMAIL = 'salvo.cannata95@gmail.com';
+
+    document.getElementById('rsvpForm').addEventListener('submit', async e => {
       e.preventDefault();
+      const btn = document.getElementById('submitBtn');
+      const check = document.getElementById('checkmark');
+      const status = document.getElementById('status');
+      
       const f = new FormData(e.target);
       const yes = f.get('attendance').startsWith('Si');
       const n = yes ? parseInt(f.get('guests') || '1', 10) : 0;
@@ -644,20 +667,39 @@
         guestLines.push(`  ${i}. ${f.get('guest_name_' + i) || ''} - Menù: ${f.get('guest_menu_' + i) || 'Non indicato'} - Allergie/intolleranze: ${f.get('guest_allergy_' + i) || 'Non indicate'}`);
       }
 
-      const lines = [
-        'Conferma matrimonio - Salvatore & Alessia',
+      const riepilogo = [
         'Nome: ' + f.get('name'),
         'Telefono: ' + f.get('phone'),
         'Risposta: ' + f.get('attendance'),
         ...(yes ? ['Numero partecipanti: ' + f.get('guests'), 'Elenco partecipanti:', ...guestLines] : []),
         'Altre comunicazioni: ' + (f.get('notes') || 'Nessuna')
-      ];
+      ].join('\n');
 
-      const subject = encodeURIComponent('Conferma matrimonio - ' + f.get('name'));
-      const body = encodeURIComponent(lines.join('\n'));
+      f.set('Riepilogo completo', riepilogo);
+      f.set('_subject', 'Conferma matrimonio - ' + f.get('name'));
+      f.set('_template', 'table');
+      f.set('_captcha', 'false');
 
-      document.getElementById('status').textContent = 'Si aprirà il programma email con la conferma precompilata.';
-      window.location.href = `mailto:?subject=${subject}&body=${body}`;
+      btn.disabled = true;
+      btn.textContent = 'Invio in corso...';
+      status.textContent = '';
+
+      try {
+        const res = await fetch('https://formsubmit.co/ajax/' + RSVP_EMAIL, {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: f
+        });
+        
+        if (!res.ok) throw new Error('invio fallito');
+        
+        btn.textContent = 'Invia risposta';
+        check.classList.remove('hidden');
+      } catch (err) {
+        btn.disabled = false;
+        btn.textContent = 'Invia risposta';
+        status.textContent = "Si è verificato un errore durante l'invio, riprova tra poco.";
+      }
     });
   </script>
 </body>
