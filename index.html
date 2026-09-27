@@ -621,10 +621,10 @@
         </div>
 
         <div class="field hidden" id="transportField">
-          <label>Avrai bisogno di un mezzo di trasporto per raggiungere la chiesa e il locale?</label>
+          <label>Avrai/avrete bisogno di un mezzo di trasporto per raggiungere la chiesa e il locale?</label>
           <div class="radiorow">
-            <label><input type="radio" name="transport" value="Sì"> Sì</label>
-            <label><input type="radio" name="transport" value="No"> No</label>
+            <label><input type="radio" name="transport" value="Sì"> Sì</label><br>
+            <label><input type="radio" name="transport" value="No"> No, mi organizzo autonomamente</label>
           </div>
         </div>
 
@@ -746,7 +746,7 @@
       // Ricostruisce l'invio con etichette in italiano, una riga per ciascuna informazione:
       // niente più blocco unico di testo, ma una tabella ordinata e leggibile nella mail.
       const mail = new FormData();
-      mail.set('Nome e Cognome', raw.get('name'));
+      mail.set('Nome e cognome', raw.get('name'));
       mail.set('Telefono', raw.get('phone'));
       mail.set('Partecipazione', yes ? 'Sì, ci sarà' : 'No, non potrà esserci');
 
