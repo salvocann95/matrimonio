@@ -655,6 +655,7 @@
     // Copy IBAN functionality
     const iban = document.getElementById('iban');
     const copy = document.getElementById('copy');
+    let copyResetTimer = null;
 
     copy.addEventListener('click', async () => {
       try {
@@ -663,6 +664,11 @@
       } catch (e) {
         copy.textContent = 'Seleziona e copia l’IBAN';
       }
+
+      clearTimeout(copyResetTimer);
+      copyResetTimer = setTimeout(() => {
+        copy.textContent = 'Copia IBAN';
+      }, 1000);
     });
 
     // Dynamic Form Handlers
