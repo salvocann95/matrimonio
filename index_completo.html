@@ -9,7 +9,7 @@
   <!-- Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400&display=swap" rel="stylesheet">
 
   <style>
     /* ==========================================
@@ -17,25 +17,25 @@
        ========================================== */
     :root {
       /* Palette colori */
-      --deep: #78add4;         /* Azzurro polvere titoli e testi principale */
-      --ink: #263f59;          /* Blu notte per i titoli e l'IBAN */
-      --muted: #263f59;        /* Blu notte per i testi secondari */
-      --accent: #b9dcef;       /* Azzurro chiaro per la & del menù */
-      --success: #3f7d52;      /* Verde spunta */
-      --nav-link: #526b80;     /* Link menù */
+      --deep: #78add4;  /* Azzurro polvere: logo, pulsanti (sfondo e bordo), testo sotto i nomi, la & dei nomi, sfondo del footer, bordo dei campi selezionati. Più scuro = più contrasto */
+      --ink: #263f59;  /* Blu notte: testo principale, nomi (h1), IBAN, etichette del modulo, data */
+      --muted: #263f59;  /* Blu notte (uguale a --ink): testi secondari (introduzioni, dettagli regalo, descrizioni tappe). Schiariscilo per distinguerli dal testo principale */
+      --accent: #b9dcef;  /* Azzurro chiaro: usato solo per la & nel logo in alto a sinistra */
+      --success: #3f7d52;  /* Verde: solo la scritta ✓ Risposta inoltrata */
+      --nav-link: #526b80;  /* Grigio-blu: link del menù a riposo (al passaggio del mouse diventano --deep) */
 
       /* Sfondi */
-      --bg: #f5f8fa;
-      --pale: #ffffff;
-      --paper: #f8fbfd;
-      --sky: #edf6fb;
-      --frost: #f4f9fc;
+      --bg: #f5f8fa;  /* Sfondo generale: si vede poco perché ogni sezione ha già un proprio sfondo */
+      --pale: #ffffff;  /* Bianco: sfondo sezioni Lista nozze e RSVP, box IBAN, campi del modulo, card delle tappe */
+      --paper: #f8fbfd;  /* Bianco freddo: sfondo del box regalo e del modulo RSVP */
+      --sky: #edf6fb;  /* Azzurrino: sfondo della sezione Il viaggio e colore finale del velo sulla foto in alto */
+      --frost: #f4f9fc;  /* Quasi bianco: colore iniziale del velo sulla foto in alto e colore del testo nel footer */
 
       /* Bordi e ombre */
-      --border-light: #d9e5ed;
-      --border-faint: #e4edf2;
-      --heading: #78add4;
-      --shadow: 0 12px 32px rgba(40, 76, 105, .07);
+      --border-light: #d9e5ed;  /* Colore dei bordi dei campi del modulo */
+      --border-faint: #e4edf2;  /* Colore del bordo del box IBAN (più chiaro dei campi) */
+      --heading: #78add4;  /* Colore dei titoli h2 e h3: oggi uguale a --deep ma indipendente, cambialo per colorare solo i titoli */
+      --shadow: 0 12px 32px rgba(40, 76, 105, .07);  /* Ombra dei box: 12px = spostamento verso il basso, 32px = sfumatura (più alto = più morbida), .07 = intensità da 0 a 1 */
     }
 
     * {
@@ -56,12 +56,12 @@
 
     /* Elementi di layout e tipografia comuni */
     section {
-      padding: 76px 22px;
-	  scroll-margin-top: 60px;	/* Valore che regola il margine superiore di ogni sezione */
+      padding: 76px 22px;  /* 76px sopra/sotto = spazio tra una sezione e l'altra, 22px ai lati. Più alto = pagina più arieggiata */
+	  scroll-margin-top: 60px;  /* Distanza dal bordo alto dello schermo quando clicchi il menù: tienila >= altezza della barra (circa 52px) o il titolo finisce sotto la barra */
     }
 
     .wrap {
-      max-width: 1000px;
+      max-width: 1000px;  /* Larghezza massima del contenuto: su schermi larghi non supera 1000px. Più alto = contenuto più esteso */
       margin: auto;
     }
 
@@ -70,16 +70,16 @@
     }
 
     .intro {
-      max-width: 650px;
+      max-width: 650px;  /* Larghezza del paragrafo introduttivo: più stretto = righe più corte */
       margin: 0 auto;
       color: var(--muted);
-      font-size: 14px;
-      line-height: 1.9;
+      font-size: 14px;  /* Dimensione del testo */
+      line-height: 1.9;  /* Interlinea: 1.9 = 1,9 volte la dimensione del testo. Più alto = righe più distanziate */
     }
 
     .eyebrow {
-      font-size: 10px;
-      letter-spacing: 3px;
+      font-size: 10px;  /* Dimensione della scritta piccola sopra i titoli */
+      letter-spacing: 3px;  /* Spazio tra le lettere: 0 = normale, più alto = scritta più larga */
       text-transform: uppercase;
       color: var(--ink);
     }
@@ -90,41 +90,35 @@
     }
 
     h2 {
-      font-size: clamp(30px, 5vw, 43px);
-      margin: 10px 0 12px;
-      color: var(--heading);
+      font-size: clamp(30px, 5vw, 43px);  /* Titoli di sezione: minimo 30px (telefono), 5vw = cresce con lo schermo, massimo 43px (desktop) */
+      margin: 10px 0 12px;  /* 10px sopra (distanza dalla scritta piccola), 0 ai lati, 12px sotto (distanza dal testo) */
+      color: var(--heading);  /* Colore da --heading */
     }
 
     h3 {
-      font-size: 25px;
+      font-size: 25px;  /* Dimensione dei titoli delle tappe del viaggio */
       margin: 10px 0;
       color: var(--heading);
     }
 
     .btn {
       display: inline-block;
-      border: 1px solid var(--deep);
-      background: var(--deep);
-      color: white;
-      padding: 13px 22px;
+      border: 1px solid var(--deep);  /* Bordo da 1px dello stesso colore dello sfondo: cambia il colore per un contorno diverso */
+      background: var(--deep);  /* Colore di riempimento del pulsante, da --deep */
+      color: white;  /* Colore del testo nel pulsante */
+      padding: 13px 22px;  /* Dimensione del pulsante: 13px sopra/sotto = altezza, 22px ai lati = larghezza */
       text-decoration: none;
-      font: 600 11px 'DM Sans', sans-serif;
+      font: 600 11px 'DM Sans', sans-serif;  /* 600 = spessore del testo (400 normale, 700 grassetto), 11px = dimensione */
       letter-spacing: 1px;
       text-transform: uppercase;
       cursor: pointer;
-      border-radius: 4px;
-      transition: background .2s ease, transform .2s ease, box-shadow .2s ease;
+      border-radius: 4px;  /* 4px = angoli leggermente arrotondati, 0 = squadrati, 30px = a pillola */
+      transition: transform .2s ease, box-shadow .2s ease;
     }
 
     .btn:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 5px 14px rgba(54, 103, 142, .16);
-    }
-
-    .btn.light {
-      background: transparent;
-      border: 1px solid var(--deep);
-      color: var(--deep);
+      transform: translateY(-1px);  /* Di quanto si solleva al passaggio del mouse: -1px = 1px verso l'alto */
+      box-shadow: 0 5px 14px rgba(54, 103, 142, .16);  /* Ombra al passaggio del mouse: 5px verso il basso, 14px sfumatura, .16 intensità */
     }
 
     .btn:disabled {
@@ -144,22 +138,22 @@
       right: 0;
       z-index: 100;
       background: #ffffff; /* Sfondo solido per non mostrare trasparenze del contenuto sottostante */
-      border-bottom: 1px solid rgba(217, 229, 237, .8);
+      border-bottom: 1px solid rgba(217, 229, 237, .8);  /* Linea sotto la barra: 1px di spessore, colore azzurro chiaro con opacità .8 */
     }
 
     .navin {
-      max-width: 1100px;
+      max-width: 1100px;  /* Larghezza massima del contenuto della barra */
       margin: auto;
-      padding: 13px 22px;
+      padding: 13px 22px;  /* 13px sopra/sotto = ALTEZZA della barra. Se la cambi aggiorna anche margin-top dell'hero e scroll-margin-top delle sezioni */
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 12px;
+      gap: 12px;  /* Distanza minima tra logo e menù */
     }
 
     .brand {
-      font: 20px 'Playfair Display', Georgia, serif;
-      color: var(--deep);
+      font: 20px 'Playfair Display', Georgia, serif;  /* 20px = dimensione del logo Salvatore & Alessia */
+      color: var(--deep);  /* Colore del logo, da --deep (la & ha il suo colore --accent) */
       white-space: nowrap;
       text-decoration: none;
       cursor: pointer;
@@ -167,15 +161,15 @@
 
     .links {
       display: flex;
-      gap: 22px;
+      gap: 22px;  /* 22px tra una voce e l'altra del menù */
       flex-wrap: wrap;
     }
 
     .links a {
-      font-size: 11px;
-      letter-spacing: .8px;
+      font-size: 11px;  /* Dimensione delle voci del menù */
+      letter-spacing: .8px;  /* Spazio tra le lettere delle voci */
       text-transform: uppercase;
-      color: var(--nav-link);
+      color: var(--nav-link);  /* Colore a riposo, da --nav-link */
       text-decoration: none;
       transition: color .2s ease;
     }
@@ -188,42 +182,43 @@
        3. SEZIONE HERO (INTESTAZIONE)
        ========================================== */
     .hero {
-      margin-top: 50px; /* Distanza per far partire lo sfondo subito sotto la barra di navigazione */
-      min-height: 700px;	/* Altezza dell'immagine di sfondo */
+      margin-top: 50px;  /* Deve essere circa uguale all'altezza della barra (50px): sposta la foto rispetto alla barra */
+      min-height: 700px;  /* Altezza minima della sezione con la foto: più alto = foto più grande */
       display: grid;
       place-items: center;
       text-align: center;
-      padding: 60px 22px 76px;
+      padding: 60px 22px 76px;  /* 60px sopra, 22px ai lati, 76px sotto: sposta il contenuto dentro la foto */
       position: relative;
       isolation: isolate;
+      /* Velo sulla foto: 91% = opacità del velo (100% = foto invisibile, 0% = nessun velo). I colori vanno da --frost (in alto) a --sky (in basso); center/cover = foto centrata e ritagliata per riempire */
       background: linear-gradient(180deg, color-mix(in srgb, var(--frost) 91%, transparent), var(--sky)), url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1800&q=85') center/cover;
     }
 
     .hero::before {
       content: "";
       position: absolute;
-      inset: 18px;
-      border: 1px solid rgba(255,255,255,.72);
+      inset: 18px;  /* Distanza della cornice bianca dal bordo della foto (18px). Più alto = cornice più interna */
+      border: 1px solid rgba(255,255,255,.72);  /* 1px = spessore della cornice, .72 = opacità (1 = bianco pieno, 0 = invisibile) */
       pointer-events: none;
       z-index: -1;
     }
 
     .hero-inner {
-      max-width: 700px;
+      max-width: 700px;  /* Larghezza massima del blocco di testo al centro */
     }
 
     .kicker {
-      font-size: 10px;
-      letter-spacing: 3px;
+      font-size: 10px;  /* Dimensione della scritta Il nostro matrimonio */
+      letter-spacing: 3px;  /* Spazio tra le lettere della scritta */
       text-transform: uppercase;
       color: var(--ink);
     }
 
     h1 {
-      font-size: clamp(48px, 8vw, 82px);
-	  line-height: 1.05;
-	  margin: 18px 0 10px;
-	  color: var(--ink);
+      font-size: clamp(48px, 8vw, 82px);  /* Nomi: minimo 48px (telefono), 8vw = cresce con lo schermo, massimo 82px (desktop) */
+	  line-height: 1.05;  /* Interlinea tra Salvatore e Alessia: 1.05 = quasi attaccate, aumenta per distanziarle */
+	  margin: 18px 0 10px;  /* 18px sopra e 10px sotto i nomi */
+	  color: var(--ink);  /* Colore dei nomi, da --ink */
 	  text-align: center;
     }
 
@@ -231,7 +226,7 @@
 	h1 span {
 	  display: inline-flex;
 	  align-items: baseline;
-	  gap: 8px;
+	  gap: 8px;  /* Non ha effetto sulla &, che è posizionata in modo assoluto (vedi h1 em) */
 	  position: relative;
 	}
 
@@ -240,24 +235,24 @@
 	  font-family: 'Playfair Display', Georgia, serif;
 	  font-style: italic;
 	  font-weight: 400;
-	  color: var(--deep);
-	  font-size: 0.80em; /* Dimensione */
+	  color: var(--deep);  /* Colore della &, da --deep */
+	  font-size: 0.80em;  /* Dimensione della & rispetto ai nomi: 0.80em = 80%. Aumenta per una & più grande */
 	  position: absolute;
-	  left: 100%;
-	  bottom: 0.40em;	/* Altezza (Posizione Verticale) */
-	  margin-left: 8px;	/* Distanza (Posizione Orizzontale) */
+	  left: 100%;  /* 100% = la & parte dal bordo destro di Alessia */
+	  bottom: 0.40em;  /* Altezza della &: più alto = sale, più basso = scende */
+	  margin-left: 8px;  /* Distanza orizzontale tra Alessia e la &: più alto = più a destra */
 	}
 
     .hero p {
-      font: 19px/1.7 'Playfair Display', Georgia, serif;
-      color: var(--deep);
-      margin: 15px auto 25px;
+      font: 19px/1.7 'Playfair Display', Georgia, serif;  /* 19px = dimensione del testo, 1.7 = interlinea */
+      color: var(--deep);  /* Colore del testo, da --deep */
+      margin: 15px auto 25px;  /* 15px sopra, centrato, 25px sotto (distanza dai pulsanti) */
     }
 
     .ornament {
       color: var(--ink);
-      letter-spacing: 8px;
-      margin: 20px;
+      letter-spacing: 8px;  /* Spazio tra i caratteri della data: 8px = molto aperto */
+      margin: 20px;  /* 20px tutto intorno (distanza da nomi e testo) */
     }
 
     /* ==========================================
@@ -268,24 +263,23 @@
     }
 
     .giftbox {
-      max-width: 600px;
-      margin: 34px auto 0;
+      max-width: 600px;  /* Larghezza del box con l'IBAN */
+      margin: 34px auto 0;  /* 34px sopra = distanza dal testo introduttivo, centrato ai lati */
       background: var(--paper);
-      border: 1px solid #dce9f1;
-      border-radius: 9px;
-      padding: 34px;
+      border: 1px solid #dce9f1;  /* Bordo da 1px azzurro chiaro fisso (#dce9f1) */
+      border-radius: 9px;  /* 9px = angoli arrotondati, 0 = squadrati */
+      padding: 34px;  /* Spazio interno del box: 34px su ogni lato */
       text-align: center;
-      box-shadow: var(--shadow);
+      box-shadow: var(--shadow);  /* Ombra da --shadow */
     }
 
     .gift-icon {
-      width: 42px;
+      width: 42px;  /* 42px = dimensione dell'icona regalo (l'SVG si adatta al 100% di questo riquadro) */
       height: 42px;
-      margin: 0 auto 14px;
+      margin: 0 auto 14px;  /* 14px sotto l'icona, centrata */
       display: grid;
       place-items: center;
-      color: var(--deep);
-      font-size: 19px;
+      color: var(--deep);  /* Colore dell'icona (l'SVG usa currentColor, quindi prende questo colore) */
     }
 
     .gift-icon svg {
@@ -293,43 +287,37 @@
       height: 100%;
     }
 
-    .giftbox .holder {
-      font: 21px 'Playfair Display', Georgia, serif;
-      color: var(--ink);
-      margin: 9px 0 20px;
-    }
-
     .iban-label {
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 2px;
+      font-size: 10px;  /* Dimensione della scritta IBAN */
+      font-weight: 700;  /* 700 = grassetto */
+      letter-spacing: 2px;  /* Spazio tra le lettere */
       color: var(--muted);
       text-transform: uppercase;
-      margin-top: 20px;
+      margin-top: 20px;  /* Distanza dall'icona sopra */
     }
 
     .iban {
-      font: 500 14px 'DM Sans', sans-serif;
-      letter-spacing: .7px;
+      font: 500 14px 'DM Sans', sans-serif;  /* 500 = spessore, 14px = dimensione del numero IBAN */
+      letter-spacing: .7px;  /* Spazio tra i caratteri dell'IBAN */
       overflow-wrap: anywhere;
-      background: var(--pale);
-      border: 1px solid var(--border-faint);
-      border-radius: 6px;
-      padding: 16px;
-      margin: 10px 0 16px;
-      color: var(--ink);
+      background: var(--pale);  /* Sfondo del riquadro IBAN, da --pale */
+      border: 1px solid var(--border-faint);  /* Bordo da 1px, colore da --border-faint */
+      border-radius: 6px;  /* 6px = angoli arrotondati del riquadro */
+      padding: 16px;  /* 16px di spazio attorno al numero: più alto = riquadro più grande */
+      margin: 10px 0 16px;  /* 10px sopra, 16px sotto (distanza dal pulsante Copia) */
+      color: var(--ink);  /* Colore del numero IBAN, da --ink */
     }
 
     .gift-details {
-      font-size: 13px;
-      line-height: 1.7;
-      color: var(--muted);
-      margin: 19px 0 0;
+      font-size: 13px;  /* Dimensione di Intestatario e Causale */
+      line-height: 1.7;  /* Interlinea */
+      color: var(--muted);  /* Colore delle etichette, da --muted */
+      margin: 19px 0 0;  /* 19px sopra = distanza tra un blocco e l'altro */
     }
 
     .gift-details strong {
-      color: var(--ink);
-      font-weight: 600;
+      color: var(--ink);  /* Colore di nome intestatario e causale, da --ink */
+      font-weight: 600;  /* 600 = semi-grassetto (700 = grassetto pieno) */
     }
 
     /* ==========================================
@@ -341,53 +329,53 @@
 
     .route {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-      margin-top: 35px;
+      grid-template-columns: repeat(3, 1fr);  /* 3 colonne uguali: cambia il 3 per più o meno tappe affiancate */
+      gap: 20px;  /* Spazio tra le card */
+      margin-top: 35px;  /* Distanza dal testo introduttivo */
     }
 
     .stop {
       background: var(--pale);
-      border: 1px solid #e0ebf1;
-      border-radius: 8px;
+      border: 1px solid #e0ebf1;  /* Bordo da 1px azzurro chiaro fisso (#e0ebf1) */
+      border-radius: 8px;  /* 8px = angoli arrotondati delle card */
       overflow: hidden;
-      box-shadow: var(--shadow);
+      box-shadow: var(--shadow);  /* Ombra da --shadow */
       transition: transform .22s ease, box-shadow .22s ease;
     }
 
     .stop:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 16px 36px rgba(40, 76, 105, .11);
+      transform: translateY(-3px);  /* Di quanto si solleva la card al passaggio del mouse: -3px = 3px verso l'alto */
+      box-shadow: 0 16px 36px rgba(40, 76, 105, .11);  /* Ombra più marcata al passaggio: 16px verso il basso, 36px sfumatura, .11 intensità */
     }
 
     .stop img {
       width: 100%;
-      height: 230px;
+      height: 230px;  /* 230px = altezza delle foto (la larghezza segue la card; le foto vengono ritagliate, non deformate) */
       object-fit: cover;
       display: block;
     }
 
     .stopbody {
-      padding: 22px;
+      padding: 22px;  /* 22px di spazio attorno al testo della card */
     }
 
     .stopbody p {
-      font-size: 13px;
-      line-height: 1.8;
-      color: var(--muted);
+      font-size: 13px;  /* Dimensione del testo della tappa */
+      line-height: 1.8;  /* Interlinea */
+      color: var(--muted);  /* Colore del testo, da --muted */
       margin: 0;
     }
 
     .tag {
       display: inline-block;
-      color: #426987;
-      background: #e8f4fb;
-      border: 1px solid #d5eaf6;
-      border-radius: 30px;
-      padding: 6px 10px;
-      font-size: 9px;
+      color: #426987;  /* Colore del testo dell'etichetta (es. Prima tappa) */
+      background: #e8f4fb;  /* Colore di sfondo dell'etichetta */
+      border: 1px solid #d5eaf6;  /* Bordo da 1px, colore fisso */
+      border-radius: 30px;  /* 30px = forma a pillola, 0 = rettangolare */
+      padding: 6px 10px;  /* 6px sopra/sotto, 10px ai lati: dimensione dell'etichetta */
+      font-size: 9px;  /* Dimensione del testo dell'etichetta */
       font-weight: 600;
-      letter-spacing: 1.5px;
+      letter-spacing: 1.5px;  /* Spazio tra le lettere */
       text-transform: uppercase;
     }
 
@@ -399,45 +387,45 @@
     }
 
     .form {
-      max-width: 650px;
-      margin: 32px auto 0;
-      padding: 30px;
+      max-width: 650px;  /* Larghezza del modulo */
+      margin: 32px auto 0;  /* 32px sopra = distanza dal testo introduttivo, centrato ai lati */
+      padding: 30px;  /* Spazio interno del modulo: 30px su ogni lato */
       background: var(--paper);
-      border: 1px solid #dce9f1;
-      border-radius: 9px;
+      border: 1px solid #dce9f1;  /* Bordo da 1px azzurro chiaro fisso (#dce9f1) */
+      border-radius: 9px;  /* 9px = angoli arrotondati */
       box-shadow: var(--shadow);
       text-align: left;
     }
 
     .grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
+      grid-template-columns: 1fr 1fr;  /* 2 colonne uguali per Nome e Telefono affiancati */
+      gap: 16px;  /* Spazio tra le due colonne */
     }
 
     .field {
-      margin-bottom: 17px;
+      margin-bottom: 17px;  /* 17px di distanza tra un campo e il successivo */
     }
 
     .field label {
       display: block;
-      font-size: 11px;
-      font-weight: 600;
+      font-size: 11px;  /* Dimensione delle etichette dei campi */
+      font-weight: 600;  /* 600 = semi-grassetto */
       letter-spacing: .6px;
-      color: var(--ink);
-      margin-bottom: 7px;
+      color: var(--ink);  /* Colore delle etichette, da --ink */
+      margin-bottom: 7px;  /* Distanza tra etichetta e campo */
     }
 
     .field input,
     .field select,
     .field textarea {
       width: 100%;
-      padding: 12px;
-      border: 1px solid var(--border-light);
-      background: var(--pale);
+      padding: 12px;  /* 12px = spazio interno dei campi: più alto = campi più alti */
+      border: 1px solid var(--border-light);  /* Bordo da 1px, colore da --border-light */
+      background: var(--pale);  /* Sfondo dei campi, da --pale */
       color: var(--ink);
-      font: 13px 'DM Sans', sans-serif;
-      border-radius: 4px;
+      font: 13px 'DM Sans', sans-serif;  /* 13px = dimensione del testo nei campi (su telefono diventa 16px, vedi in fondo) */
+      border-radius: 4px;  /* 4px = angoli arrotondati dei campi */
       outline: none;
       transition: border-color .2s ease, box-shadow .2s ease;
     }
@@ -453,31 +441,31 @@
     }
 
     .field textarea {
-      min-height: 90px;
+      min-height: 90px;  /* Altezza minima dell'area per il messaggio agli sposi */
       resize: vertical;
     }
 
     .field small {
       display: block;
-      color: var(--muted);
-      font-size: 10px;
+      color: var(--muted);  /* Colore della nota, da --muted */
+      font-size: 10px;  /* Dimensione della nota sotto ai partecipanti */
       line-height: 1.5;
       margin-top: 6px;
     }
 
     .guestbox {
-      border: 1px solid #dce8ef;
+      border: 1px solid #dce8ef;  /* Bordo da 1px, colore fisso (#dce8ef) */
       background: var(--pale);
-      border-radius: 6px;
-      padding: 16px;
-      margin-bottom: 14px;
+      border-radius: 6px;  /* 6px = angoli arrotondati */
+      padding: 16px;  /* 16px di spazio interno della scheda di ogni partecipante */
+      margin-bottom: 14px;  /* 14px di distanza tra una scheda e la successiva */
     }
 
     .guestbox .gtitle {
-      font-size: 11px;
+      font-size: 11px;  /* Dimensione della scritta Partecipante N */
       letter-spacing: 1px;
       text-transform: uppercase;
-      color: var(--deep);
+      color: var(--deep);  /* Colore della scritta, da --deep */
       font-weight: 600;
       margin-bottom: 10px;
       display: block;
@@ -487,30 +475,28 @@
     .guestbox select,
     .guestbox textarea {
       width: 100%;
-      padding: 11px;
+      padding: 11px;  /* 11px = spazio interno dei campi di ogni partecipante */
       border: 1px solid var(--border-light);
       background: var(--pale);
       color: var(--ink);
-      font: 13px 'DM Sans', sans-serif;
+      font: 13px 'DM Sans', sans-serif;  /* 13px = dimensione del testo (su telefono 16px) */
       border-radius: 4px;
-      margin-bottom: 10px;
+      margin-bottom: 10px;  /* 10px di distanza tra un campo e l'altro dentro la scheda */
       outline: none;
     }
 
     .guestbox textarea {
-      min-height: 70px;
+      min-height: 70px;  /* Altezza minima dell'area allergie/intolleranze */
       resize: vertical;
     }
 
-    .guestbox input:last-child,
-    .guestbox select:last-child,
     .guestbox textarea:last-child {
       margin-bottom: 0;
     }
 
     .subfield {
-      margin: -2px 0 10px;
-      padding: 10px 12px;
+      margin: -2px 0 10px;  /* Spazio esterno del riquadro Seggiolone (-2px sopra lo avvicina al campo menù) */
+      padding: 10px 12px;  /* Spazio interno del riquadro Seggiolone */
       background: var(--pale);
       border: 1px solid var(--border-light);
       border-radius: 4px;
@@ -518,21 +504,21 @@
 
     .subfield .glabel {
       display: block;
-      font-size: 11px;
+      font-size: 11px;  /* Dimensione della scritta Seggiolone */
       color: var(--ink);
       margin-bottom: 8px;
     }
 
     .radiorow {
       display: flex;
-      gap: 18px;
+      gap: 18px;  /* 18px di distanza tra le opzioni Sì e No */
     }
 
     .radiorow label {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      font-size: 13px;
+      font-size: 13px;  /* Dimensione del testo delle opzioni */
 	  font-weight: 400;
       color: var(--ink);
       cursor: pointer;
@@ -548,21 +534,21 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      color: var(--success);
-      font: 600 13px 'DM Sans', sans-serif;
+      color: var(--success);  /* Verde della conferma di invio, da --success */
+      font: 600 13px 'DM Sans', sans-serif;  /* 600 = semi-grassetto, 13px = dimensione */
     }
 
     .status {
-      font-size: 12px;
-      color: var(--deep);
+      font-size: 12px;  /* Dimensione del messaggio di errore */
+      color: var(--deep);  /* Colore del messaggio, da --deep */
       margin-top: 12px;
-      min-height: 18px;
+      min-height: 18px;  /* Riserva 18px di altezza al messaggio così la pagina non salta quando compare */
     }
 
     .hint {
-      font-size: 11px;
+      font-size: 11px;  /* Dimensione della nota sotto al pulsante */
       line-height: 1.6;
-      color: var(--ink);
+      color: var(--ink);  /* Colore della nota, da --ink */
       margin: 16px auto 0;
     }
 
@@ -574,65 +560,65 @@
        7. FOOTER
        ========================================== */
     footer {
-      background: var(--deep);
-      color: var(--frost);
+      background: var(--deep);  /* Colore del footer, da --deep */
+      color: var(--frost);  /* Colore del testo, da --frost */
       text-align: center;
-      padding: 28px 18px;
-      font-size: 10px;
-      letter-spacing: 2px;
+      padding: 28px 18px;  /* 28px sopra/sotto = altezza del footer, 18px ai lati */
+      font-size: 10px;  /* Dimensione della scritta Con amore */
+      letter-spacing: 2px;  /* Spazio tra le lettere */
       text-transform: uppercase;
     }
 
     footer strong {
-      font: 20px 'Playfair Display', Georgia, serif;
+      font: 20px 'Playfair Display', Georgia, serif;  /* 20px = dimensione di Salvatore & Alessia nel footer */
       letter-spacing: 0;
       display: block;
-      margin-bottom: 7px;
+      margin-bottom: 7px;  /* Distanza tra i nomi e la scritta sotto */
     }
 
     /* ==========================================
        8. ADATTAMENTI MOBILE (MEDIA QUERIES)
        ========================================== */
-    @media (max-width: 650px) {
+    @media (max-width: 650px) {  /* Sotto i 650px di larghezza (telefoni) queste regole sostituiscono quelle sopra */
       /* Navigazione */
       .navin {
         align-items: center;
         justify-content: center;
-        flex-direction: column;
+        flex-direction: column;  /* Logo sopra e menù sotto: la barra diventa su 2 righe (più alta) */
         text-align: center;
       }
       .links {
         justify-content: center;
-        gap: 14px;
+        gap: 14px;  /* Distanza tra le voci del menù su telefono */
       }
       .links a {
-        font-size: 9.5px;
+        font-size: 9.5px;  /* Dimensione delle voci del menù su telefono */
       }
 
       /* Hero */
       .hero {
-        margin-top: 70px; /* Adattamento margine per il menù su 2 righe in mobile */
-        min-height: 600px;
-        padding-top: 50px;
+        margin-top: 70px;  /* 70px perché la barra su 2 righe è più alta di 50px: se cambi l'altezza della barra mobile aggiorna qui */
+        min-height: 600px;  /* Altezza minima della foto su telefono (più bassa che su desktop) */
+        padding-top: 50px;  /* Spazio sopra il contenuto della foto su telefono */
       }
 
       /* Lista nozze & Viaggio */
       .route {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr;  /* 1 colonna: le card delle tappe una sotto l'altra */
       }
       .stop img {
-        height: 210px;
+        height: 210px;  /* Altezza delle foto su telefono */
       }
       .giftbox {
-        padding: 22px 17px;
+        padding: 22px 17px;  /* Spazio interno ridotto su telefono: 22px sopra/sotto, 17px ai lati */
       }
 
       /* RSVP Form & Prevenzione zoom iOS (font 16px) */
       .form {
-        padding: 22px 17px;
+        padding: 22px 17px;  /* Spazio interno ridotto su telefono: 22px sopra/sotto, 17px ai lati */
       }
       .grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr;  /* 1 colonna: Nome e Telefono uno sotto l'altro */
       }
       .field input,
       .field select,
@@ -640,15 +626,14 @@
       .guestbox input,
       .guestbox select,
       .guestbox textarea {
-        font-size: 16px;
+        font-size: 16px;  /* 16px: non scendere sotto, altrimenti l'iPhone ingrandisce la pagina quando tocchi un campo */
       }
 
-      @media (max-width: 650px) {
-		section {
-			padding: 58px 18px;
-			scroll-margin-top: 80px; /* Compensazione maggiore per il menù su 2 righe in mobile */
-		}
-	  }
+      /* Sezioni */
+      section {
+        padding: 58px 18px;  /* Sezioni più compatte su telefono: 58px sopra/sotto, 18px ai lati */
+        scroll-margin-top: 80px;  /* Compensazione della barra su 2 righe: tienila >= altezza della barra mobile */
+      }
     }
   </style>
 </head>
@@ -657,7 +642,7 @@
   <!-- ==========================================
        1. BARRA DI NAVIGAZIONE (NAV)
        ========================================== -->
-  <nav id="navbar">
+  <nav>
     <div class="navin">
       <a class="brand" href="#">Salvatore <span style="color:var(--accent)">&amp;</span> Alessia</a>
       <div class="links">
@@ -805,7 +790,7 @@
         <div class="field hidden" id="transportField">
           <label>Avrai/avrete bisogno di un mezzo di trasporto per raggiungere la chiesa e il locale?</label>
           <div class="radiorow">
-            <label><input type="radio" name="transport" value="Sì"> Sì</label><br>
+            <label><input type="radio" name="transport" value="Sì"> Sì</label>
             <label><input type="radio" name="transport" value="No"> No, mi organizzo autonomamente</label>
           </div>
         </div>
