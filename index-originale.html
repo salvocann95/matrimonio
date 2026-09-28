@@ -411,6 +411,20 @@
       border: 1px solid var(--border-light);
     }
 
+    /* Su mobile, iOS Safari fa lo zoom automatico sui campi con font-size < 16px:
+       portiamo il font a 16px solo sotto i 600px per evitare lo zoom al tap,
+       lasciando invariata la dimensione su desktop. */
+    @media (max-width: 600px) {
+      .field input,
+      .field select,
+      .field textarea,
+      .guestbox input,
+      .guestbox select,
+      .guestbox textarea {
+        font-size: 16px;
+      }
+    }
+
     .subfield .glabel {
       display: block;
       font-size: 11px;
