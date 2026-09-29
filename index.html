@@ -13,6 +13,15 @@
 
   <style>
     /* ==========================================
+       GUIDA RAPIDA AI COMMENTI (dimensioni e colori)
+       - px: dimensione fissa. Più alto = elemento o spazio più grande.
+       - padding: spazio INTERNO di un box. margin: spazio ESTERNO (distanza dagli altri elementi).
+       - Due valori (es. 10px 20px) = sopra/sotto e sinistra/destra. Quattro valori = sopra, destra, sotto, sinistra.
+       - em = relativo alla dimensione del testo. vw = 1% della larghezza dello schermo. clamp(min, ideale, max) = dimensione che si adatta allo schermo.
+       - Colori: per cambiare tinta modifica le variabili in :root (si aggiornano ovunque) invece dei singoli usi.
+       - rgba(r, g, b, opacità): l'ultimo numero va da 0 (trasparente) a 1 (pieno).
+       ========================================== */
+    /* ==========================================
        1. VARIABILI GLOBALI E RESET
        ========================================== */
     :root {
@@ -985,11 +994,20 @@
         
         btn.textContent = 'Invia risposta';
         check.classList.remove('hidden');
-      } catch (err) {
+       } catch (err) {
         btn.disabled = false;
         btn.textContent = 'Invia risposta';
         status.textContent = "Si è verificato un errore durante l'invio, riprova tra poco.";
       }
+    });
+
+    /* ------------------------------------------
+       SCRIPT - SEZIONE 4: LOGO (Torna in cima)
+       ------------------------------------------ */
+    document.querySelector('.brand').addEventListener('click', e => {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      history.replaceState(null, '', location.pathname);
     });
   </script>
 </body>
