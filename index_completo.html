@@ -252,11 +252,24 @@
 	  bottom: 0.40em;  /* Altezza della &: più alto = sale, più basso = scende */
 	  margin-left: 8px;  /* Distanza orizzontale tra Alessia e la &: più alto = più a destra */
 	}
+	
+	@keyframes fadeInUp {
+	  from {
+		opacity: 0;
+	  }
+	  to {
+		opacity: 1;
+	  }
+	}
 
     .hero p {
       font: 19px/1.7 'Playfair Display', Georgia, serif;  /* 19px = dimensione del testo, 1.7 = interlinea */
       color: var(--deep);  /* Colore del testo, da --deep */
       margin: 15px auto 25px;  /* 15px sopra, centrato, 25px sotto (distanza dai pulsanti) */
+	  
+	  /* REGOLE PER L'EFFETTO APPARIZIONE */
+	  opacity: 0; /* Parte nascosto per evitare scatti all'apertura */
+	  animation: fadeInUp 2.2s ease-out 0.4s forwards; /* Durata 1.2s, parte dopo 0.4s */
     }
 
     .ornament {
@@ -671,7 +684,7 @@
       <div class="kicker">Il nostro matrimonio</div>
       <h1>Salvatore<br><span>Alessia <em>&amp;</em></span></h1>
       <div class="ornament">05 ✦ 06 ✦ 2027</div>
-      <p>Un giorno speciale.<br>Siamo felici di condividere con voi uno dei momenti più belli della nostra vita.</p>
+      <p>Un giorno speciale.<br>Siamo felici di condividere con voi<br>uno dei momenti più belli della nostra vita.</p>
       <span style="display:inline-flex; gap:12px; flex-wrap:wrap; justify-content:center">
         <a class="btn" href="#regalo">Partecipa al regalo</a>
         <a class="btn" href="#rsvp">Conferma la tua presenza</a>
