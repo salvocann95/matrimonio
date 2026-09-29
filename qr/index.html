@@ -1,135 +1,175 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="refresh" content="3;url=https://www.salvoealessia.it/index_completo.html">
-  <title>Salvatore & Alessia | Il nostro matrimonio</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f5f9fc">
+  <meta name="robots" content="noindex">
+  <title>Salvatore &amp; Alessia | Il nostro matrimonio</title>
+
+  <!-- Fallback senza JavaScript: apre il sito dopo 5 secondi -->
+  <noscript><meta http-equiv="refresh" content="5;url=https://salvoealessia.it/"></noscript>
+
+  <!-- Stessi font del sito -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400&display=swap" rel="stylesheet">
 
   <style>
-    * {
-      box-sizing: border-box;
+    :root {
+      --deep: #78add4;   /* Azzurro polvere: la & e la barra */
+      --ink: #263f59;    /* Blu notte: testi e nomi */
+      --accent: #b9dcef; /* Azzurro chiaro */
+      --bg: #f5f8fa;
+      --sky: #edf6fb;    /* Colore finale del velo sulla foto */
+      --frost: #f4f9fc;  /* Colore iniziale del velo sulla foto */
+      --wait: 5s;        /* Durata della barra: deve coincidere con WAIT_MS nello script */
     }
+
+    * { box-sizing: border-box; }
+
+    html, body { height: 100%; margin: 0; }
 
     body {
-      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'DM Sans', Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Stesso sfondo dell'hero del sito: foto con velo chiaro */
+    .hero {
       min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #fbf8f1;
-      color: #536f7b;
-      font-family: Georgia, "Times New Roman", serif;
+      min-height: 100dvh;
+      display: grid;
+      place-items: center;
       text-align: center;
+      padding: env(safe-area-inset-top, 0px) 22px env(safe-area-inset-bottom, 0px);
+      position: relative;
+      isolation: isolate;
+      background: linear-gradient(180deg, color-mix(in srgb, var(--frost) 91%, transparent), var(--sky)), url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1800&q=85') center/cover;
     }
 
-    .card {
-      padding: 50px 25px;
-      max-width: 500px;
-      width: 90%;
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 18px;
+      border: 1px solid rgba(255,255,255,.72);
+      pointer-events: none;
+      z-index: -1;
     }
 
-    .welcome {
-      font-family: Arial, sans-serif;
-      font-size: 11px;
-      letter-spacing: 4px;
-      color: #8da9b4;
-      margin-bottom: 25px;
+    .hero-inner { max-width: 700px; animation: appear .9s ease both; }
+
+    .kicker {
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--ink);
     }
 
     h1 {
-      font-size: clamp(32px, 8vw, 48px);
-      font-weight: normal;
-      line-height: 1.25;
-      margin: 0;
+      font-family: 'Playfair Display', Georgia, serif;
+      font-weight: 400;
+      font-size: clamp(48px, 8vw, 82px);
+      line-height: 1.05;
+      margin: 18px 0 10px;
+      color: var(--ink);
+      text-align: center;
     }
 
-    .ampersand {
-      color: #c5a76b;
+    h1 span {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 8px;
+      position: relative;
+    }
+
+    h1 em {
+      font-family: 'Playfair Display', Georgia, serif;
       font-style: italic;
+      font-weight: 400;
+      color: var(--deep);
+      font-size: 0.80em;
+      position: absolute;
+      left: 100%;
+      bottom: 0.40em;
+      margin-left: 8px;
     }
 
-    .line {
-      width: 48px;
-      height: 1px;
-      background: #c5a76b;
-      margin: 25px auto;
+    .ornament {
+      color: var(--ink);
+      letter-spacing: 8px;
+      margin: 20px;
     }
 
-    .subtitle {
-      font-size: 17px;
-      letter-spacing: 1px;
-      color: #687d82;
+    /* Barra di caricamento azzurro polvere */
+    .bar {
+      width: 160px;
+      height: 2px;
+      margin: 34px auto 0;
+      background: color-mix(in srgb, var(--deep) 28%, transparent);
+      overflow: hidden;
+      border-radius: 2px;
     }
 
-    .heart {
-      color: #c5a76b;
-      font-size: 25px;
-      margin: 25px 0;
+    .bar i {
+      display: block;
+      width: 100%;
+      height: 100%;
+      background: var(--deep);
+      transform: scaleX(0);
+      transform-origin: left;
+      animation: fill var(--wait) linear forwards;
     }
 
-    .message {
-      font-family: Arial, sans-serif;
-      font-size: 14px;
-      line-height: 1.8;
-      color: #77756f;
-      margin: 0 auto 30px;
-      max-width: 340px;
+    /* Scritta sotto la barra */
+    .hero p {
+      font: 16px/1.7 'Playfair Display', Georgia, serif;
+      color: var(--deep);
+      margin: 18px auto 0;
     }
 
-    .button {
-      display: inline-block;
-      background: #7f9eaa;
-      color: white;
-      text-decoration: none;
-      padding: 14px 32px;
-      border-radius: 30px;
-      font-family: Arial, sans-serif;
-      font-size: 13px;
-      letter-spacing: 1px;
-      transition: background 0.2s;
+    @keyframes appear { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes fill   { to { transform: scaleX(1); } }
+
+    @media (max-width: 720px) {
+      .ornament { letter-spacing: 6px; }
     }
 
-    .button:hover {
-      background: #637f8b;
-    }
-
-    .loading {
-      margin-top: 25px;
-      font-family: Arial, sans-serif;
-      font-size: 11px;
-      color: #a9a195;
-      letter-spacing: 1px;
+    @media (prefers-reduced-motion: reduce) {
+      .hero-inner { animation: none; }
+      .bar i { animation: none; transform: scaleX(1); }
     }
   </style>
 </head>
-
 <body>
-  <main class="card">
-    <div class="welcome">BENVENUTI</div>
-
-    <h1>
-      Salvatore<br><span>Alessia <em>&amp;</em></span>
-    </h1>
-
-    <div class="line"></div>
-
-    <div class="subtitle">Il nostro matrimonio</div>
-
-    <div class="heart">♡</div>
-
-    <p class="message">
-      Siamo felici di condividere con voi
-      questo giorno speciale.
-    </p>
-
-    <a class="button" href="https://www.salvoealessia.it/">
-      ENTRA NEL SITO
-    </a>
-
-    <div class="loading">
-      Ti stiamo reindirizzando…
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="kicker">Il nostro matrimonio</div>
+      <h1>Salvatore<br><span>Alessia <em>&amp;</em></span></h1>
+      <div class="ornament">05 ✦ 06 ✦ 2027</div>
+      <div class="bar" aria-hidden="true"><i id="fill"></i></div>
+      <p>Benvenuti nel nostro giorno speciale…</p>
     </div>
-  </main>
+  </header>
+
+  <script>
+    var TARGET = "https://salvoealessia.it/";
+    var WAIT_MS = 5000; // deve coincidere con --wait nel CSS
+
+    var dest = TARGET + window.location.search + window.location.hash;
+    var done = false;
+
+    function go() {
+      if (done) return;
+      done = true;
+      window.location.replace(dest);
+    }
+
+    // Apre il sito appena la barra è completa; il timer è un paracadute
+    document.getElementById("fill").addEventListener("animationend", go);
+    setTimeout(go, WAIT_MS + 300);
+  </script>
 </body>
 </html>
