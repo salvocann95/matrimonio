@@ -1053,7 +1053,27 @@
     const guestDetailsField = document.getElementById('guestDetailsField');
     const guestDetails = document.getElementById('guestDetails');
     const transportField = document.getElementById('transportField');
+	
+	const nameInput = document.getElementById('name');
+	let guest1Custom = null; // nome modificato a mano nel Partecipante 1
 
+	function firstGuestName() {
+	  return guest1Custom !== null ? guest1Custom : nameInput.value.trim();
+	}
+
+	// Se cambia il nome in alto, aggiorna il Partecipante 1 (finché non è stato modificato a mano)
+	nameInput.addEventListener('input', () => {
+	  const g1 = guestDetails.querySelector('input[name="guest_name_1"]');
+	  if (g1 && guest1Custom === null) g1.value = nameInput.value.trim();
+	});
+
+	// Se l'utente modifica il Partecipante 1, non lo sovrascrivere più
+	guestDetails.addEventListener('input', e => {
+	  if (e.target.name === 'guest_name_1') {
+		guest1Custom = e.target.value.trim() === '' ? null : e.target.value;
+	  }
+	});
+	
     // Generazione dinamica schede partecipanti
     function renderGuestDetails(n) {
       guestDetails.innerHTML = '';
@@ -1079,6 +1099,7 @@
           <textarea name="guest_allergy_${i}" placeholder="Allergie, intolleranze o esigenze alimentari (facoltativo)"></textarea>
         `;
         guestDetails.appendChild(box);
+		if (i === 1) box.querySelector('input[name="guest_name_1"]').value = firstGuestName();
       }
     }
 
