@@ -52,7 +52,7 @@
       box-sizing: border-box;
     }
 
-    html {
+    html.smooth {
       scroll-behavior: smooth;
     }
 
@@ -138,126 +138,6 @@
       box-shadow: none;
     }
 
-	/* ==========================================
-	   EFFETTO APERTURA CON FIOCCO E LIBRO
-	   ========================================== */
-	.book-overlay {
-	  position: fixed;
-	  inset: 0;
-	  z-index: 9999;
-	  display: flex;
-	  pointer-events: none;
-	  perspective: 1400px;
-	  overflow: hidden;
-	}
-
-	/* --- 1. STILI DEL NASTRO E FIOCCO --- */
-	.ribbon-wrapper {
-	  position: absolute;
-	  top: 50%;
-	  left: 0;
-	  right: 0;
-	  height: 60px;
-	  transform: translateY(-50%);
-	  display: flex;
-	  align-items: center;
-	  justify-content: center;
-	  z-index: 10000;
-	}
-
-	.ribbon-band {
-	  flex: 1;
-	  height: 18px;
-	  background: linear-gradient(180deg, rgba(120, 173, 212, 0.45), rgba(120, 173, 212, 0.25));
-	  border-top: 1px dashed rgba(120, 173, 212, 0.7);
-	  border-bottom: 1px dashed rgba(120, 173, 212, 0.7);
-	  backdrop-filter: blur(3px);
-	  animation-duration: 1s;
-	  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-	  animation-fill-mode: forwards;
-	  animation-delay: 0.2s; /* Inizio dello scioglimento */
-	}
-
-	.ribbon-left { animation-name: untieBandLeft; }
-	.ribbon-right { animation-name: untieBandRight; }
-
-	.ribbon-bow {
-	  width: 140px;
-	  height: 110px;
-	  margin: 0 -18px;
-	  z-index: 2;
-	  animation: untieBow 1s cubic-bezier(0.4, 0, 0.2, 1) 0.3s forwards;
-	}
-
-	.bow-svg {
-	  width: 100%;
-	  height: 100%;
-	  filter: drop-shadow(0 4px 6px rgba(38, 63, 89, 0.15));
-	}
-
-	/* Animazioni Scioglimento Fiocco */
-	@keyframes untieBow {
-	  0% {
-		transform: scale(1) rotate(0deg);
-		opacity: 1;
-	  }
-	  35% {
-		transform: scale(1.25) rotate(-6deg); /* Effetto "colpo di briglia" al nodo */
-		opacity: 0.9;
-	  }
-	  100% {
-		transform: scale(0.2) rotate(18deg);
-		opacity: 0;
-		visibility: hidden;
-	  }
-	}
-
-	@keyframes untieBandLeft {
-	  0% { transform: translateX(0); opacity: 1; }
-	  100% { transform: translateX(-100%); opacity: 0; visibility: hidden; }
-	}
-
-	@keyframes untieBandRight {
-	  0% { transform: translateX(0); opacity: 1; }
-	  100% { transform: translateX(100%); opacity: 0; visibility: hidden; }
-	}
-
-	/* --- 2. STILI PAGINE DEL LIBRO --- */
-	.book-page {
-	  width: 50%;
-	  height: 100%;
-	  background: linear-gradient(135deg, rgba(248, 251, 253, 0.94), rgba(237, 246, 251, 0.90));
-	  box-shadow: inset 0 0 40px rgba(120, 173, 212, 0.15);
-	  animation-duration: 1.8s;
-	  animation-timing-function: cubic-bezier(0.25, 1, 0.5, 1);
-	  animation-fill-mode: forwards;
-	  animation-delay: 0.8s; /* PARTE SUBITO DOPO CHE IL FIOCCO SI È SCIOLTO */
-	}
-
-	.page-left {
-	  transform-origin: left center;
-	  border-right: 1px solid rgba(120, 173, 212, 0.25);
-	  animation-name: openLeftPage;
-	}
-
-	.page-right {
-	  transform-origin: right center;
-	  border-left: 1px solid rgba(120, 173, 212, 0.25);
-	  animation-name: openRightPage;
-	}
-
-	@keyframes openLeftPage {
-	  0% { transform: rotateY(0deg); opacity: 1; }
-	  60% { opacity: 0.6; }
-	  100% { transform: rotateY(-105deg); opacity: 0; visibility: hidden; }
-	}
-
-	@keyframes openRightPage {
-	  0% { transform: rotateY(0deg); opacity: 1; }
-	  60% { opacity: 0.6; }
-	  100% { transform: rotateY(105deg); opacity: 0; visibility: hidden; }
-	}
-
     /* ==========================================
        2. BARRA DI NAVIGAZIONE (NAV)
        ========================================== */
@@ -306,6 +186,33 @@
 
     .links a:hover, .links a:focus-visible {
       color: var(--deep);
+    }
+
+    /* Linea sotto la voce del menù corrispondente alla sezione in cui ti trovi */
+    .links a {
+      position: relative;
+    }
+
+    .links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -6px;  /* Distanza della linea dal testo: più alto (in negativo) = linea più in basso */
+      height: 2px;  /* Spessore della linea */
+      background: var(--deep);  /* Colore della linea */
+      border-radius: 2px;
+      transform: scaleX(0);
+      transform-origin: center;
+      transition: transform .25s ease;
+    }
+
+    .links a.active {
+      color: var(--deep);
+    }
+
+    .links a.active::after {
+      transform: scaleX(1);
     }
 
     /* ==========================================
@@ -768,35 +675,7 @@
   </style>
 </head>
 <body>
-	
-  <!-- Sovrapposizione Effetto Libro + Fiocco -->
-  <div class="book-overlay" aria-hidden="true">
-    <!-- Nastro e Fiocco centrale -->
-    <div class="ribbon-wrapper">
-      <div class="ribbon-band ribbon-left"></div>
-      <div class="ribbon-bow">
-        <!-- Disegno del fiocco coordinato -->
-        <svg class="bow-svg" viewBox="0 0 100 80" fill="none" stroke="#78add4" stroke-width="3">
-          <!-- Anello sinistro del fiocco -->
-          <path d="M 50 38 C 25 10, 5 25, 50 38" fill="rgba(120, 173, 212, 0.25)" />
-          <!-- Anello destro del fiocco -->
-          <path d="M 50 38 C 75 10, 95 25, 50 38" fill="rgba(120, 173, 212, 0.25)" />
-          <!-- Nastro pendente sinistro -->
-          <path d="M 46 40 Q 32 58 22 72" stroke-linecap="round"/>
-          <!-- Nastro pendente destro -->
-          <path d="M 54 40 Q 68 58 78 72" stroke-linecap="round"/>
-          <!-- Nodo centrale -->
-          <circle cx="50" cy="38" r="6" fill="#78add4" />
-        </svg>
-      </div>
-      <div class="ribbon-band ribbon-right"></div>
-    </div>
 
-    <!-- Pagine del libro -->
-    <div class="book-page page-left"></div>
-    <div class="book-page page-right"></div>
-  </div>
-	  
   <!-- ==========================================
        1. BARRA DI NAVIGAZIONE (NAV)
        ========================================== -->
@@ -1151,6 +1030,41 @@
     });
 
     /* ------------------------------------------
+       SCRIPT - MENÙ: sottolinea la voce della sezione visibile
+       ------------------------------------------ */
+    (function () {
+      const navLinks = Array.from(document.querySelectorAll('.links a[href^="#"]'));
+      const items = navLinks
+        .map(a => ({ link: a, section: document.querySelector(a.getAttribute('href')) }))
+        .filter(x => x.section);
+      const offset = 120; // distanza dall'alto oltre la quale una sezione conta come "attiva"
+
+      function updateActive() {
+        let current = null;
+        const atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4;
+
+        if (atBottom) {
+          current = items[items.length - 1];
+        } else {
+          items.forEach(x => {
+            if (x.section.getBoundingClientRect().top <= offset) current = x;
+          });
+        }
+
+        items.forEach(x => {
+          const on = x === current;
+          x.link.classList.toggle('active', on);
+          if (on) x.link.setAttribute('aria-current', 'true');
+          else x.link.removeAttribute('aria-current');
+        });
+      }
+
+      window.addEventListener('scroll', updateActive, { passive: true });
+      window.addEventListener('resize', updateActive);
+      updateActive();
+    })();
+
+    /* ------------------------------------------
        SCRIPT - SEZIONE 4: LOGO (Torna in cima)
        ------------------------------------------ */
     document.querySelector('.brand').addEventListener('click', e => {
@@ -1158,6 +1072,11 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
       history.replaceState(null, '', location.pathname);
     });
+	
+	/* ------------------------------------------
+       SCRIPT - Scorrimento morbido attivato dopo il caricamento
+       ------------------------------------------ */
+    window.addEventListener('load', () => document.documentElement.classList.add('smooth'));
   </script>
 </body>
 </html>
