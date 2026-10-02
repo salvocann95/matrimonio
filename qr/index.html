@@ -7,10 +7,9 @@
   <meta name="robots" content="noindex">
   <title>Salvatore &amp; Alessia | Il nostro matrimonio</title>
 
-  <!-- Fallback senza JavaScript: apre il sito dopo 7 secondi (5s animazione + 2s pausa) -->
+  <!-- Fallback senza JavaScript: apre il sito dopo 5 secondi (3s animazione + 2s pausa) -->
   <noscript><meta http-equiv="refresh" content="7;url=https://salvoealessia.it/"></noscript>
 
-  <!-- Stessi font del sito -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400&display=swap" rel="stylesheet">
@@ -37,7 +36,6 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* Stesso sfondo dell'hero del sito: foto con velo chiaro */
     .hero {
       min-height: 100vh;
       min-height: 100dvh;
@@ -103,7 +101,6 @@
       margin: 20px;
     }
 
-    /* Barra di caricamento azzurro polvere */
     .bar {
       width: 160px;
       height: 2px;
@@ -123,7 +120,6 @@
       animation: fill var(--wait) linear forwards;
     }
 
-    /* Scritta sotto la barra */
     .hero p {
       font: 16px/1.7 'Playfair Display', Georgia, serif;
       color: var(--deep);
@@ -160,10 +156,12 @@
   </header>
 
   <script>
+	history.replaceState(null, '', '/');
+	
     var TARGET = "https://salvoealessia.it/";
     var ANIMATION_MS = 3000; // 3 secondi di caricamento (barra + testo)
-    var PAUSE_MS = 1000;     // 1 secondi di pausa a completamento avvenuto
-    var TOTAL_WAIT = ANIMATION_MS + PAUSE_MS; // Totale: 4000ms (4 secondi)
+    var PAUSE_MS = 2000;     // 2 secondi di pausa a completamento avvenuto
+    var TOTAL_WAIT = ANIMATION_MS + PAUSE_MS; // Totale: 5000ms (5 secondi)
 
     var dest = TARGET + window.location.search + window.location.hash;
     var done = false;
@@ -174,7 +172,7 @@
       window.location.replace(dest);
     }
 
-    // Apre il sito esattamente dopo 4 secondi (3s animazione + 1s pausa)
+    // Apre il sito esattamente dopo 5 secondi (3s animazione + 2s pausa)
     setTimeout(go, TOTAL_WAIT);
   </script>
 </body>
