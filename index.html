@@ -12,30 +12,28 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400&display=swap" rel="stylesheet">
 
   <style>
-    /* ==========================================
-       VARIABILI GLOBALI E RESET
-       ========================================== */
+
     :root {
       /* Palette colori */
-      --deep: #78add4;  /* Azzurro polvere: logo, pulsanti (sfondo e bordo), testo sotto i nomi, la & dei nomi, sfondo del footer, bordo dei campi selezionati. Più scuro = più contrasto */
-      --ink: #263f59;  /* Blu notte: testo principale, nomi (h1), IBAN, etichette del modulo, data */
-      --muted: #263f59;  /* Blu notte: testi secondari (introduzioni, dettagli regalo, descrizioni tappe). */
-      --accent: #b9dcef;  /* Azzurro chiaro: usato solo per la & nel logo in alto a sinistra */
-      --success: #3f7d52;  /* Verde: solo la scritta ✓ Risposta inoltrata */
-      --nav-link: #526b80;  /* Grigio-blu: link del menù a riposo (al passaggio del mouse diventano --deep) */
+      --deep: #78add4; 
+      --ink: #263f59;
+      --muted: #263f59;
+      --accent: #b9dcef;
+      --success: #3f7d52;
+      --nav-link: #526b80;
 
       /* Sfondi */
-      --bg: #f5f8fa;  /* Sfondo generale: si vede poco perché ogni sezione ha già un proprio sfondo */
-      --pale: #ffffff;  /* Bianco: sfondo sezioni Lista nozze e RSVP, box IBAN, campi del modulo, card delle tappe */
-      --paper: #f8fbfd;  /* Bianco freddo: sfondo del box regalo e del modulo RSVP */
-      --sky: #edf6fb;  /* Azzurrino: sfondo della sezione Il viaggio e colore finale del velo sulla foto in alto */
-      --frost: #f4f9fc;  /* Quasi bianco: colore iniziale del velo sulla foto in alto e colore del testo nel footer */
+      --bg: #f5f8fa;
+      --pale: #ffffff;
+      --paper: #f8fbfd;
+      --sky: #edf6fb;
+      --frost: #f4f9fc;
 
       /* Bordi e ombre */
-      --border-light: #d9e5ed;  /* Colore dei bordi dei campi del modulo */
-      --border-faint: #e4edf2;  /* Colore del bordo del box IBAN (più chiaro dei campi) */
-      --heading: #78add4;  /* Colore dei titoli h2 e h3: oggi uguale a --deep ma indipendente, cambialo per colorare solo i titoli */
-      --shadow: 0 12px 32px rgba(40, 76, 105, .07);  /* Ombra dei box: 12px = spostamento verso il basso, 32px = sfumatura (più alto = più morbida), .07 = intensità da 0 a 1 */
+      --border-light: #d9e5ed;
+      --border-faint: #e4edf2;
+      --heading: #78add4;
+      --shadow: 0 12px 32px rgba(40, 76, 105, .07);
     }
 
     * {
@@ -1081,7 +1079,10 @@
           if (needsSeggiolone) {
             parti.push('Seggiolone: ' + (raw.get('guest_seggiolone_' + i) || 'Non indicato'));
           }
-          parti.push('Allergie/intolleranze: ' + ((raw.get('guest_allergy_' + i) || '').trim() || 'Nessuna'));
+          const allergie = (raw.get('guest_allergy_' + i) || '')
+		  .split(/[\r\n]+/).map(x => x.trim()).filter(Boolean)
+		  .reduce((txt, riga) => !txt ? riga : txt + (/[.!?,;:]$/.test(txt) ? ' ' : ', ') + riga, '');
+		  parti.push('Allergie/intolleranze: ' + (allergie || 'Nessuna'));
           mail.set('Ospite-' + i, parti.join('  \u2022  '));
         }
         mail.set('Trasporto', raw.get('transport') || 'Non indicato');
