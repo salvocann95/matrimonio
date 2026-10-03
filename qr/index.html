@@ -16,13 +16,13 @@
 
   <style>
     :root {
-      --deep: #78add4;   /* Azzurro polvere: la & e la barra */
-      --ink: #263f59;    /* Blu notte: testi e nomi */
-      --accent: #b9dcef; /* Azzurro chiaro */
+      --deep: #78add4;
+      --ink: #263f59;
+      --accent: #b9dcef;
       --bg: #f5f8fa;
-      --sky: #edf6fb;    /* Colore finale del velo sulla foto */
-      --frost: #f4f9fc;  /* Colore iniziale del velo sulla foto */
-      --wait: 3s;        /* Durata delle animazioni testo e barra: deve coincidere con var ANIMATION_MS nello script */
+      --sky: #edf6fb;
+      --frost: #f4f9fc;
+      --wait: 3s;
     }
 
     * { box-sizing: border-box; }
@@ -36,7 +36,6 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* Stesso sfondo dell'hero del sito: foto con velo chiaro */
     .hero {
       min-height: 100vh;
       min-height: 100dvh;
@@ -157,22 +156,24 @@
   </header>
 
   <script>
-    var TARGET = "https://salvoealessia.it/";
-    var ANIMATION_MS = 3000; // 3 secondi di caricamento (barra + testo)
-    var PAUSE_MS = 1500;     // 1.5 secondi di pausa a completamento avvenuto
-    var TOTAL_WAIT = ANIMATION_MS + PAUSE_MS; // Totale: 4500ms (4.5 secondi)
+  var ANIMATION_MS = 3000;
+  var PAUSE_MS = 1500;
+  var TOTAL_WAIT = ANIMATION_MS + PAUSE_MS;
 
-    var dest = TARGET + window.location.search + window.location.hash;
-    var done = false;
+  var suffix = window.location.search + window.location.hash;
+  var done = false;
 
-    function go() {
-      if (done) return;
-      done = true;
-      window.location.replace(dest);
-    }
+  try {
+    history.replaceState(null, "", "/" + suffix);
+  } catch (e) { }
 
-    // Apre il sito esattamente dopo 4.5 secondi (3s animazione + 1.5s pausa)
-    setTimeout(go, TOTAL_WAIT);
-  </script>
+  function go() {
+    if (done) return;
+    done = true;
+    window.location.replace("/" + suffix);
+  }
+
+  setTimeout(go, TOTAL_WAIT);
+</script>
 </body>
 </html>
