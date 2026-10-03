@@ -1065,8 +1065,6 @@
       const mail = new FormData();
       const nome = (raw.get('name') || '').trim();
 
-      // NB: FormSubmit trasforma gli spazi dei nomi campo in "_": per questo si usano
-      // nomi a parola singola (o con trattino) e si raggruppano i dettagli nel valore.
       mail.set('Nome', nome);
       mail.set('Telefono', raw.get('phone') || 'Non indicato');
       mail.set('Presenza', yes ? '\u2705 S\u00ec, ci sar\u00e0' : '\u274c No, non potr\u00e0 esserci');
@@ -1091,7 +1089,7 @@
 
       mail.set('Messaggio', (raw.get('notes') || '').trim() || 'Nessun messaggio');
 
-      mail.set('_subject', '\ud83d\udc8d RSVP: ' + nome + ' \u2013 ' + (yes ? 'ci sar\u00e0 (' + n + (n === 1 ? ' persona)' : ' persone)') : 'non potr\u00e0 esserci'));
+      mail.set('_subject', '\ud83d\udc8d RSVP: ' + nome + ' \u2013 ' + (yes ? 'Ci sar\u00e0 (' + n + (n === 1 ? ' persona)' : ' persone)') : 'Non potr\u00e0 esserci'));
       mail.set('_template', 'box');
       mail.set('_captcha', 'false');
       mail.set('_cc', 'alessiasalvato96@gmail.com');
