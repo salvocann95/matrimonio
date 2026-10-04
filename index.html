@@ -936,7 +936,7 @@
     let copyResetTimer = null;
 
     copy.addEventListener('click', async () => {
-      try { window.goatcounter && window.goatcounter.count({ path: 'click-copia-iban', title: 'Clic Copia IBAN', event: true }); } catch (e) {}
+      try { window.goatcounter && window.goatcounter.count({ path: 'clic-copia-iban', title: 'Clic Copia IBAN', event: true }); } catch (e) {}
       const value = iban.textContent.replace(/\s/g, '');
       try {
         if (navigator.clipboard && window.isSecureContext) {
