@@ -10,11 +10,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400&display=swap" rel="stylesheet">
+  <script data-goatcounter="https://salvoealessia.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 
   <style>
 
     :root {
-      /* Palette colori */
       --deep: #78add4; 
       --ink: #263f59;
       --muted: #263f59;
@@ -22,14 +22,12 @@
       --success: #3f7d52;
       --nav-link: #526b80;
 
-      /* Sfondi */
       --bg: #f5f8fa;
       --pale: #ffffff;
       --paper: #f8fbfd;
       --sky: #edf6fb;
-      --frost: #f4f9fc;
+      --frost: #f4f9fc;  
 
-      /* Bordi e ombre */
       --border-light: #d9e5ed;
       --border-faint: #e4edf2;
       --heading: #78add4;
@@ -799,7 +797,7 @@
     <div class="wrap center">
       <div class="eyebrow">La nostra lista nozze</div>
       <h2>Un pensiero per il nostro viaggio</h2>
-      <p class="intro">Il regalo più bello sarà festeggiare insieme a voi ma, se vi fa piacere, potrete contribuire al nostro viaggio di nozze.</p>
+      <p class="intro">Il regalo più bello sarà festeggiare insieme a voi ma, se vi fa piacere, potrete rendere ancora più speciale la nostra luna di miele.</p>
 
       <div class="giftbox">
         <div class="gift-icon" aria-hidden="true">
@@ -939,6 +937,8 @@
     let copyResetTimer = null;
 
     copy.addEventListener('click', async () => {
+      // Statistiche: conta il clic su "Copia IBAN"
+      try { window.goatcounter && window.goatcounter.count({ path: 'clic-copia-iban', title: 'Clic Copia IBAN', event: true }); } catch (e) {}
       const value = iban.textContent.replace(/\s/g, '');
       try {
         if (navigator.clipboard && window.isSecureContext) {
@@ -1047,6 +1047,12 @@
 
     attendance.addEventListener('change', syncGuestUI);
     guests.addEventListener('change', () => renderGuestDetails(parseInt(guests.value, 10)));
+	
+	function track(path, title) {
+	  try { window.goatcounter && window.goatcounter.count({ path: path, title: title, event: true }); } catch (e) {}
+	}
+
+	document.getElementById('rsvpForm').addEventListener('focusin', () => track('rsvp-iniziato', 'RSVP iniziato'), { once: true });
 
     const RSVP_EMAIL = 'salvo.cannata95@gmail.com';
 
@@ -1108,11 +1114,14 @@
         
         if (!res.ok) throw new Error('invio fallito');
         
+		track(yes ? 'rsvp-inviato-si' : 'rsvp-inviato-no', yes ? 'RSVP inviato: Ci sarà' : 'RSVP inviato: Non ci sarà');
+		
         btn.textContent = 'Invia risposta';
         check.classList.remove('hidden');
        } catch (err) {
         btn.disabled = false;
         btn.textContent = 'Invia risposta';
+		track('rsvp-errore-invio', 'RSVP errore invio');
         status.textContent = "Si è verificato un errore durante l'invio, riprova tra poco.";
       }
     });
