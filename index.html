@@ -1112,7 +1112,7 @@
         
         if (!res.ok) throw new Error('invio fallito');
         
-		track(yes ? 'rsvp-inviato-si' : 'rsvp-inviato-no', yes ? 'RSVP inviato: Ci sarà' : 'RSVP inviato: Non ci sarà');
+		track(yes ? 'rsvp-invitato-presente' : 'rsvp-invitato-assente', yes ? 'RSVP inviato: Ci sarà' : 'RSVP inviato: Non ci sarà');
 		
         btn.textContent = 'Invia risposta';
         check.classList.remove('hidden');
