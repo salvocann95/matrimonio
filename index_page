@@ -1,0 +1,1168 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f9fc">
+  <meta name="format-detection" content="telephone=no">
+  <title>Salvatore &amp; Alessia | Il nostro matrimonio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400&display=swap" rel="stylesheet">
+  <script data-goatcounter="https://salvoealessia.goatcounter.com/count" data-goatcounter-settings='{"path": "/accesso-sito", "title": "Accesso al sito"}' async src="https://gc.zgo.at/count.js"></script>
+  <style>
+
+    :root {
+      --deep: #78add4; 
+      --ink: #263f59;
+      --muted: #263f59;
+      --accent: #b9dcef;
+      --success: #3f7d52;
+      --nav-link: #526b80;
+
+      --bg: #f5f8fa;
+      --pale: #ffffff;
+      --paper: #f8fbfd;
+      --sky: #edf6fb;
+      --frost: #f4f9fc;  
+
+      --border-light: #d9e5ed;
+      --border-faint: #e4edf2;
+      --heading: #78add4;
+      --shadow: 0 12px 32px rgba(40, 76, 105, .07);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html.smooth {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'DM Sans', Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    section {
+      padding: 76px 22px; 
+	  scroll-margin-top: 60px; 
+    }
+
+    .wrap {
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .center {
+      text-align: center;
+    }
+
+    .intro {
+      max-width: 650px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.9;
+    }
+
+    .eyebrow {
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--ink);
+    }
+
+    h1, h2, h3 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-weight: 400;
+    }
+
+    h2 {
+      font-size: clamp(30px, 5vw, 43px);
+      margin: 10px 0 12px;
+      color: var(--heading);
+    }
+
+    h3 {
+      font-size: 25px;
+      margin: 10px 0;
+      color: var(--heading);
+    }
+
+    .btn {
+      display: inline-block;
+      border: 1px solid var(--deep);
+      background: var(--deep);
+      color: white;
+      padding: 13px 22px;
+      text-decoration: none;
+      font: 600 11px 'DM Sans', sans-serif;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 5px 14px rgba(54, 103, 142, .16);
+    }
+
+    .btn:disabled {
+      opacity: .6;
+      cursor: default;
+      transform: none;
+      box-shadow: none;
+    }
+
+	.book-overlay {
+	  position: fixed;
+	  inset: 0;
+	  z-index: 9999;
+	  display: flex;
+	  pointer-events: none;
+	  perspective: 1400px;
+	  overflow: hidden;
+	}
+
+	.ribbon-wrapper {
+	  position: absolute;
+	  top: 50%;
+	  left: 0;
+	  right: 0;
+	  height: 60px;
+	  transform: translateY(-50%);
+	  display: flex;
+	  align-items: center;
+	  justify-content: center;
+	  z-index: 10000;
+	}
+
+	.ribbon-band {
+	  flex: 1;
+	  height: 4px;
+	  background: #78add4;
+	  border-radius: 2px;
+	  position: relative;
+	  top: -2.75px;
+	  animation-duration: 1s;
+	  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+	  animation-fill-mode: forwards;
+	  animation-delay: 0.2s;
+	}
+
+	.ribbon-left { animation-name: untieBandLeft; transform-origin: right center; }
+	.ribbon-right { animation-name: untieBandRight; transform-origin: left center; }
+
+	.ribbon-bow {
+	  width: 140px;
+	  height: 110px;
+	  margin: 0 -70px;
+	  z-index: 2;
+	  animation: untieBow 1s cubic-bezier(0.4, 0, 0.2, 1) 0.3s forwards;
+	}
+
+	.bow-svg {
+	  width: 100%;
+	  height: 100%;
+	  filter: drop-shadow(0 4px 6px rgba(38, 63, 89, 0.15));
+	}
+
+	@keyframes untieBow {
+	  0% {
+		transform: scale(1) rotate(0deg);
+		opacity: 1;
+	  }
+	  35% {
+		transform: scale(1.25) rotate(-6deg);
+		opacity: 0.9;
+	  }
+	  100% {
+		transform: scale(0.2) rotate(18deg);
+		opacity: 0;
+		visibility: hidden;
+	  }
+	}
+
+	@keyframes untieBandLeft {
+	  0% { transform: scaleX(1); opacity: 1; }
+	  100% { transform: scaleX(0); opacity: 0; visibility: hidden; }
+	}
+
+	@keyframes untieBandRight {
+	  0% { transform: scaleX(1); opacity: 1; }
+	  100% { transform: scaleX(0); opacity: 0; visibility: hidden; }
+	}
+
+	.book-page {
+	  width: 50%;
+	  height: 100%;
+	  background: linear-gradient(135deg, rgba(248, 251, 253, 0.94), rgba(237, 246, 251, 0.90));
+	  box-shadow: inset 0 0 40px rgba(120, 173, 212, 0.15);
+	  animation-duration: 1.8s;
+	  animation-timing-function: cubic-bezier(0.25, 1, 0.5, 1);
+	  animation-fill-mode: forwards;
+	  animation-delay: 0.8s;
+	}
+
+	.page-left {
+	  transform-origin: left center;
+	  border-right: 1px solid rgba(120, 173, 212, 0.25);
+	  animation-name: openLeftPage;
+	}
+
+	.page-right {
+	  transform-origin: right center;
+	  border-left: 1px solid rgba(120, 173, 212, 0.25);
+	  animation-name: openRightPage;
+	}
+
+	@keyframes openLeftPage {
+	  0% { transform: rotateY(0deg); opacity: 1; }
+	  60% { opacity: 0.6; }
+	  100% { transform: rotateY(-105deg); opacity: 0; visibility: hidden; }
+	}
+
+	@keyframes openRightPage {
+	  0% { transform: rotateY(0deg); opacity: 1; }
+	  60% { opacity: 0.6; }
+	  100% { transform: rotateY(105deg); opacity: 0; visibility: hidden; }
+	}
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: #ffffff;
+      border-bottom: 1px solid rgba(217, 229, 237, .8);
+    }
+
+    .navin {
+      max-width: 1100px;
+      margin: auto;
+      padding: 13px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .brand {
+      font: 20px 'Playfair Display', Georgia, serif;
+      color: var(--deep);
+      white-space: nowrap;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .links {
+      display: flex;
+      gap: 22px;
+      flex-wrap: wrap;
+    }
+
+    .links a {
+      font-size: 11px;
+      letter-spacing: .8px;
+      text-transform: uppercase;
+      color: var(--nav-link);
+      text-decoration: none;
+      transition: color .2s ease;
+    }
+
+    .links a:hover, .links a:focus-visible {
+      color: var(--deep);
+    }
+
+    .links a {
+      position: relative;
+    }
+
+    .links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -6px;
+      height: 2px;
+      background: var(--deep);
+      border-radius: 2px;
+      transform: scaleX(0);
+      transform-origin: center;
+      transition: transform .25s ease;
+    }
+
+    .links a.active {
+      color: var(--deep);
+    }
+
+    .links a.active::after {
+      transform: scaleX(1);
+    }
+
+    .hero {
+      margin-top: 50px;
+      min-height: 700px;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 60px 22px 76px;
+      position: relative;
+      isolation: isolate;
+      background: linear-gradient(180deg, color-mix(in srgb, var(--frost) 91%, transparent), var(--sky)), url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1800&q=85') center/cover;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 18px;
+      border: 1px solid rgba(255,255,255,.72);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .hero-inner {
+      max-width: 700px;
+    }
+
+    .kicker {
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--ink);
+    }
+
+    h1 {
+      font-size: clamp(48px, 8vw, 82px);
+	  line-height: 1.05;
+	  margin: 18px 0 10px;
+	  color: var(--ink);
+	  text-align: center;
+    }
+
+	h1 span {
+	  display: inline-flex;
+	  align-items: baseline;
+	  gap: 8px;
+	  position: relative;
+	}
+
+	h1 em {
+	  font-family: 'Playfair Display', Georgia, serif;
+	  font-style: italic;
+	  font-weight: 400;
+	  color: var(--deep);
+	  font-size: 0.80em;
+	  position: absolute;
+	  left: 100%;
+	  bottom: 0.40em;
+	  margin-left: 8px;
+	}
+
+    .hero p {
+      font: 16px/1.7 'Playfair Display', Georgia, serif;
+      color: var(--deep);
+      margin: 15px auto 25px;
+    }
+
+    .ornament {
+      color: var(--ink);
+      letter-spacing: 8px;
+      margin: 20px;
+    }
+
+    .gift {
+      background: var(--pale);
+    }
+
+    .giftbox {
+      max-width: 600px;
+      margin: 34px auto 0;
+      background: var(--paper);
+      border: 1px solid #dce9f1;
+      border-radius: 9px;
+      padding: 34px;
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+
+    .gift-icon {
+      width: 42px;
+      height: 42px;
+      margin: 0 auto 14px;
+      display: grid;
+      place-items: center;
+      color: var(--deep);
+    }
+
+    .gift-icon svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .iban-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-top: 20px;
+    }
+
+    .iban {
+      font: 500 14px 'DM Sans', sans-serif;
+      letter-spacing: .7px;
+      overflow-wrap: anywhere;
+      background: var(--pale);
+      border: 1px solid var(--border-faint);
+      border-radius: 6px;
+      padding: 16px;
+      margin: 10px 0 16px;
+      color: var(--ink);
+    }
+
+    .gift-details {
+      font-size: 13px;
+      line-height: 1.7;
+      color: var(--muted);
+      margin: 19px 0 0;
+    }
+
+    .gift-details strong {
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    .journey {
+      background: var(--sky);
+    }
+
+    .route {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 35px;
+    }
+
+    .stop {
+      background: var(--pale);
+      border: 1px solid #e0ebf1;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: transform .22s ease, box-shadow .22s ease;
+    }
+
+    .stop:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 36px rgba(40, 76, 105, .11);
+    }
+
+    .stop img {
+      width: 100%;
+      height: 230px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .stopbody {
+      padding: 22px;
+    }
+
+    .stopbody p {
+      font-size: 13px;
+      line-height: 1.8;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .tag {
+      display: inline-block;
+      color: #426987;
+      background: #e8f4fb;
+      border: 1px solid #d5eaf6;
+      border-radius: 30px;
+      padding: 6px 10px;
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .rsvp {
+      background: var(--pale);
+    }
+
+    .form {
+      max-width: 650px;
+      margin: 32px auto 0;
+      padding: 30px;
+      background: var(--paper);
+      border: 1px solid #dce9f1;
+      border-radius: 9px;
+      box-shadow: var(--shadow);
+      text-align: left;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .field {
+      margin-bottom: 17px;
+    }
+
+    .field label {
+      display: block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .6px;
+      color: var(--ink);
+      margin-bottom: 7px;
+    }
+
+    .field input,
+    .field select,
+    .field textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid var(--border-light);
+      background: var(--pale);
+      color: var(--ink);
+      font: 13px 'DM Sans', sans-serif;
+      border-radius: 4px;
+      outline: none;
+      transition: border-color .2s ease, box-shadow .2s ease;
+    }
+
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus,
+    .guestbox input:focus,
+    .guestbox select:focus,
+    .guestbox textarea:focus {
+      border-color: var(--deep);
+      box-shadow: 0 0 0 3px rgba(111,159,196,.14);
+    }
+
+    .field textarea {
+      min-height: 90px;
+      resize: vertical;
+    }
+
+    .field small {
+      display: block;
+      color: var(--muted);
+      font-size: 10px;
+      line-height: 1.5;
+      margin-top: 6px;
+    }
+
+    .guestbox {
+      border: 1px solid #dce8ef;
+      background: var(--pale);
+      border-radius: 6px;
+      padding: 16px;
+      margin-bottom: 14px;
+    }
+
+    .guestbox .gtitle {
+      font-size: 11px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--deep);
+      font-weight: 600;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .guestbox input,
+    .guestbox select,
+    .guestbox textarea {
+      width: 100%;
+      padding: 11px;
+      border: 1px solid var(--border-light);
+      background: var(--pale);
+      color: var(--ink);
+      font: 13px 'DM Sans', sans-serif;
+      border-radius: 4px;
+      margin-bottom: 10px;
+      outline: none;
+    }
+
+    .guestbox textarea {
+      min-height: 70px;
+      resize: vertical;
+    }
+
+    .guestbox textarea:last-child {
+      margin-bottom: 0;
+    }
+
+    .subfield {
+      margin: -2px 0 10px;
+      padding: 10px 12px;
+      background: var(--pale);
+      border: 1px solid var(--border-light);
+      border-radius: 4px;
+    }
+
+    .subfield .glabel {
+      display: block;
+      font-size: 11px;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+
+    .radiorow {
+      display: flex;
+      gap: 18px;
+    }
+
+    .radiorow label {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+	  font-weight: 400;
+      color: var(--ink);
+      cursor: pointer;
+    }
+
+    .radiorow input[type="radio"] {
+      width: auto;
+      margin: 0;
+      cursor: pointer;
+    }
+
+    .checkmark {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--success);
+      font: 600 13px 'DM Sans', sans-serif;
+    }
+
+    .status {
+      font-size: 12px;
+      color: var(--deep);
+      margin-top: 12px;
+      min-height: 18px;
+    }
+
+    .hint {
+      font-size: 11px;
+      line-height: 1.6;
+      color: var(--ink);
+      margin: 16px auto 0;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    footer {
+      background: var(--deep);
+      color: var(--frost);
+      text-align: center;
+      padding: 28px 18px;
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    footer strong {
+      font: 20px 'Playfair Display', Georgia, serif;
+      letter-spacing: 0;
+      display: block;
+      margin-bottom: 7px;
+    }
+
+    @media (max-width: 650px) {
+	
+      /* Navigazione */
+      .navin {
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+      }
+      .links {
+        justify-content: center;
+        gap: 14px;
+      }
+      .links a {
+        font-size: 9.5px;
+      }
+
+      /* Hero */
+      .hero {
+        margin-top: 70px; 
+        min-height: 600px;
+        padding-top: 50px;
+      }
+
+      /* Lista nozze & Viaggio */
+      .route {
+        grid-template-columns: 1fr;
+      }
+      .stop img {
+        height: 210px;
+      }
+      .giftbox {
+        padding: 22px 17px;
+      }
+
+      /* RSVP Form */
+      .form {
+        padding: 22px 17px;
+      }
+      .grid {
+        grid-template-columns: 1fr;
+      }
+      .field input,
+      .field select,
+      .field textarea,
+      .guestbox input,
+      .guestbox select,
+      .guestbox textarea {
+        font-size: 16px;
+      }
+
+      /* Sezioni */
+      section {
+        padding: 58px 18px; 
+        scroll-margin-top: 80px;
+      }
+    }
+  </style>
+</head>
+<body>
+	
+  <div class="book-overlay" aria-hidden="true">
+    <div class="ribbon-wrapper">
+      <div class="ribbon-band ribbon-left"></div>
+      <div class="ribbon-bow">
+        <svg class="bow-svg" viewBox="0 0 100 80" fill="none" stroke="#78add4" stroke-width="3">
+          <path d="M 50 38 C 25 10, 5 25, 50 38" fill="rgba(120, 173, 212, 0.25)" />
+          <path d="M 50 38 C 75 10, 95 25, 50 38" fill="rgba(120, 173, 212, 0.25)" />
+          <path d="M 46 40 Q 32 58 22 72" stroke-linecap="round"/>
+          <path d="M 54 40 Q 68 58 78 72" stroke-linecap="round"/>
+          <circle cx="50" cy="38" r="6" fill="#78add4" />
+        </svg>
+      </div>
+      <div class="ribbon-band ribbon-right"></div>
+    </div>
+    <div class="book-page page-left"></div>
+    <div class="book-page page-right"></div>
+  </div>
+
+  <nav>
+    <div class="navin">
+      <a class="brand" href="#">Salvatore <span style="color:var(--accent)">&amp;</span> Alessia</a>
+      <div class="links">
+        <a href="#regalo">Lista nozze</a>
+        <a href="#viaggio">Il viaggio</a>
+        <a href="#rsvp">Conferma presenza</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="kicker">Il nostro matrimonio</div>
+      <h1>Salvatore<br><span>Alessia <em>&amp;</em></span></h1>
+      <div class="ornament">05 ✦ 06 ✦ 2027</div>
+      <p>Siamo felici di condividere con voi<br>uno dei momenti più belli della nostra vita.</p>
+      <span style="display:inline-flex; gap:12px; flex-wrap:wrap; justify-content:center">
+        <a class="btn" href="#regalo">Partecipa al regalo</a>
+        <a class="btn" href="#rsvp">Conferma la tua presenza</a>
+      </span>
+    </div>
+  </header>
+
+  <section class="gift" id="regalo">
+    <div class="wrap center">
+      <div class="eyebrow">La nostra lista nozze</div>
+      <h2>Un pensiero per il nostro viaggio</h2>
+      <p class="intro">Il regalo più bello sarà festeggiare insieme a voi ma, se vi fa piacere, potrete rendere ancora più speciale la nostra luna di miele.</p>
+
+      <div class="giftbox">
+        <div class="gift-icon" aria-hidden="true">
+          <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+            <rect x="8" y="24" width="48" height="32" rx="2" fill="none" stroke="currentColor" stroke-width="2.5"/>
+            <rect x="6" y="18" width="52" height="9" rx="2" fill="none" stroke="currentColor" stroke-width="2.5"/>
+            <line x1="32" y1="18" x2="32" y2="56" stroke="currentColor" stroke-width="2.5"/>
+            <path d="M32 18 C27 18 19 15 19 10 C19 7 21 5 24 5 C29 5 32 12 32 18Z" fill="none" stroke="currentColor" stroke-width="2.5"/>
+            <path d="M32 18 C37 18 45 15 45 10 C45 7 43 5 40 5 C35 5 32 12 32 18Z" fill="none" stroke="currentColor" stroke-width="2.5"/>
+          </svg>
+        </div>
+        <div class="iban-label">IBAN</div>
+        <div class="iban" id="iban">IT13 B036 6901 6008 1788 6448 592</div>
+        <button class="btn" id="copy" type="button">Copia IBAN</button>
+        <p class="gift-details">Intestatario<br><strong>Salvatore Cannata & Alessia Salvato</strong></p>
+        <p class="gift-details">Causale suggerita<br><strong>Regalo di nozze</strong></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="journey" id="viaggio">
+    <div class="wrap center">
+      <div class="eyebrow">Dopo il nostro sì</div>
+      <h2>Il viaggio dei nostri sogni</h2>
+      <p class="intro">Stiamo preparando un'avventura speciale. Qui troverete alcune delle tappe che immaginiamo di vivere: un viaggio fatto di scoperte, paesaggi indimenticabili e ricordi da custodire.</p>
+      
+      <div class="route">
+        <article class="stop">
+          <img src="images/route66.jpg" alt="Route 66">
+          <div class="stopbody">
+            <span class="tag">Prima tappa</span>
+            <h3>Stati Uniti On the Road</h3>
+            <p>Da Las Vegas a Los Angeles, quasi 2.000 chilometri di emozioni lungo la strada più famosa d'America: la Route 66. Guideremo verso i canyon e i parchi più iconici del Southwest.</p>
+          </div>
+        </article>
+
+        <article class="stop">
+          <img src="images/polinesia.jpg" alt="Polinesia Francese">
+          <div class="stopbody">
+            <span class="tag">Seconda tappa</span>
+            <h3>Polinesia Francese</h3>
+            <p>La parte più romantica del nostro viaggio. Acque cristalline, isole da sogno e giornate lente passate tra totale relax, immersioni tra pesci colorati e tramonti indimenticabili.</p>
+          </div>
+        </article>
+
+        <article class="stop">
+          <img src="images/san-francisco.jpg" alt="San Francisco">
+          <div class="stopbody">
+            <span class="tag">Terza tappa</span>
+            <h3>San Francisco</h3>
+            <p>L'ultimo indimenticabile capitolo del nostro viaggio prevede un saluto dolce alla California: arriveremo a San Francisco. Ci lasceremo cullare dal ritmo lento dei suoi storici Cable Car e ammireremo il celebre Golden Gate Bridge.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="rsvp" id="rsvp">
+    <div class="wrap center">
+      <div class="eyebrow">Ci sarai?</div>
+      <h2>Conferma la tua presenza</h2>
+      <p class="intro">Per aiutarci a organizzare al meglio la giornata, vi chiediamo di compilare il modulo qui sotto. Bastano pochi istanti.</p>
+      
+      <form class="form" id="rsvpForm">
+        <div class="grid">
+          <div class="field">
+            <label for="name">Nome e cognome *</label>
+            <input id="name" name="name" required placeholder="Il tuo nome">
+          </div>
+          <div class="field">
+            <label for="phone">Numero di telefono *</label>
+            <input id="phone" name="phone" type="tel" required placeholder="Es. 333 1234567">
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="attendance">Parteciperai al matrimonio? *</label>
+          <select id="attendance" name="attendance" required>
+            <option value="">Seleziona una risposta</option>
+            <option value="Si, ci sarò">Sì, ci sarò</option>
+            <option value="No, non potrò esserci">Mi dispiace, non potrò esserci</option>
+          </select>
+        </div>
+
+        <div class="field hidden" id="guestsField">
+          <label for="guests">Numero totale di partecipanti (incluso te) *</label>
+          <select id="guests" name="guests">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+          </select>
+        </div>
+
+        <div class="field hidden" id="guestDetailsField">
+          <label>Partecipanti, menù e allergie/intolleranze</label>
+          <div id="guestDetails"></div>
+          <small>Indica nome e cognome, tipo di menù ed eventuali allergie/intolleranze per ciascun partecipante.</small>
+        </div>
+
+        <div class="field hidden" id="transportField">
+          <label>Avrai/avrete bisogno di un mezzo di trasporto per raggiungere la chiesa e il locale?</label>
+          <div class="radiorow">
+            <label><input type="radio" name="transport" value="Sì, ho bisogno di un mezzo di trasporto"> Sì</label>
+            <label><input type="radio" name="transport" value="No, mi organizzo autonomamente"> No, mi organizzo autonomamente</label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="notes">Altre comunicazioni (facoltativo)</label>
+          <textarea id="notes" name="notes" placeholder="Un messaggio per gli sposi..."></textarea>
+        </div>
+
+        <div style="display:flex; align-items:center; gap:14px; flex-wrap:wrap">
+          <button class="btn" id="submitBtn" type="submit">Invia risposta</button>
+          <span class="checkmark hidden" id="checkmark">✓ Risposta inoltrata</span>
+        </div>
+        
+        <div class="status" id="status" aria-live="polite"></div>
+        <p class="hint">Le risposte vengono inviate direttamente agli sposi.</p>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <strong>Salvatore &amp; Alessia</strong>
+    Con amore · Grazie di cuore
+  </footer>
+
+  <script>
+    const iban = document.getElementById('iban');
+    const copy = document.getElementById('copy');
+    let copyResetTimer = null;
+
+    copy.addEventListener('click', async () => {
+      try { window.goatcounter && window.goatcounter.count({ path: 'clic-copia-iban', title: 'Clic copia IBAN', event: true }); } catch (e) {}
+      const value = iban.textContent.replace(/\s/g, '');
+      try {
+        if (navigator.clipboard && window.isSecureContext) {
+          await navigator.clipboard.writeText(value);
+          copy.textContent = 'IBAN COPIATO ✓';
+        } else {
+          const temporary = document.createElement('textarea');
+          temporary.value = value;
+          temporary.setAttribute('readonly', '');
+          temporary.style.position = 'fixed';
+          temporary.style.opacity = '0';
+          document.body.appendChild(temporary);
+          temporary.select();
+          const copied = document.execCommand('copy');
+          temporary.remove();
+          copy.textContent = copied ? 'IBAN COPIATO ✓' : 'Seleziona e copia l’IBAN';
+        }
+      } catch (e) {
+        copy.textContent = 'Seleziona e copia l’IBAN';
+      }
+
+      clearTimeout(copyResetTimer);
+      copyResetTimer = setTimeout(() => {
+        copy.textContent = 'Copia IBAN';
+      }, 1000);
+    });
+
+    const attendance = document.getElementById('attendance');
+    const guestsField = document.getElementById('guestsField');
+    const guests = document.getElementById('guests');
+    const guestDetailsField = document.getElementById('guestDetailsField');
+    const guestDetails = document.getElementById('guestDetails');
+    const transportField = document.getElementById('transportField');
+	
+	const nameInput = document.getElementById('name');
+	let guest1Custom = null;
+
+	function firstGuestName() {
+	  return guest1Custom !== null ? guest1Custom : nameInput.value.trim();
+	}
+
+	nameInput.addEventListener('input', () => {
+	  const g1 = guestDetails.querySelector('input[name="guest_name_1"]');
+	  if (g1 && guest1Custom === null) g1.value = nameInput.value.trim();
+	});
+
+	guestDetails.addEventListener('input', e => {
+	  if (e.target.name === 'guest_name_1') {
+		guest1Custom = e.target.value.trim() === '' ? null : e.target.value;
+	  }
+	});
+	
+    function renderGuestDetails(n) {
+      guestDetails.innerHTML = '';
+      for (let i = 1; i <= n; i++) {
+        const box = document.createElement('div');
+        box.className = 'guestbox';
+        box.innerHTML = `
+          <span class="gtitle">Partecipante ${i}</span>
+          <input type="text" name="guest_name_${i}" placeholder="Nome e cognome *" required>
+          <select name="guest_menu_${i}" required data-guest="${i}">
+            <option value="">Seleziona il menù *</option>
+            <option value="Menù adulto">Menù adulto</option>
+            <option value="Menù bambino">Menù bambino</option>
+            <option value="Neonato">Neonato</option>
+          </select>
+          <div class="subfield hidden" id="seggiolone_field_${i}">
+            <span class="glabel">Seggiolone</span>
+            <div class="radiorow">
+              <label><input type="radio" name="guest_seggiolone_${i}" value="Sì"> Sì</label>
+              <label><input type="radio" name="guest_seggiolone_${i}" value="No"> No</label>
+            </div>
+          </div>
+          <textarea name="guest_allergy_${i}" placeholder="Allergie, intolleranze o esigenze alimentari (facoltativo)"></textarea>
+        `;
+        guestDetails.appendChild(box);
+		if (i === 1) box.querySelector('input[name="guest_name_1"]').value = firstGuestName();
+      }
+    }
+
+    guestDetails.addEventListener('change', e => {
+      const select = e.target.closest('select[name^="guest_menu_"]');
+      if (!select) return;
+      const i = select.dataset.guest;
+      const seggioloneField = document.getElementById('seggiolone_field_' + i);
+      const needsSeggiolone = select.value === 'Menù bambino' || select.value === 'Neonato';
+      seggioloneField.classList.toggle('hidden', !needsSeggiolone);
+      if (!needsSeggiolone) {
+        seggioloneField.querySelectorAll('input[type="radio"]').forEach(r => r.checked = false);
+      }
+    });
+
+    function syncGuestUI() {
+      const yes = attendance.value.startsWith('Si');
+      guestsField.classList.toggle('hidden', !yes);
+      guestDetailsField.classList.toggle('hidden', !yes);
+      transportField.classList.toggle('hidden', !yes);
+      guests.required = yes;
+
+      if (yes) {
+        renderGuestDetails(parseInt(guests.value, 10));
+      } else {
+        guestDetails.innerHTML = '';
+      }
+    }
+
+    attendance.addEventListener('change', syncGuestUI);
+    guests.addEventListener('change', () => renderGuestDetails(parseInt(guests.value, 10)));
+	
+	function track(path, title) {
+	  try { window.goatcounter && window.goatcounter.count({ path: path, title: title, event: true }); } catch (e) {}
+	}
+
+	document.getElementById('rsvpForm').addEventListener('focusin', () => track('rsvp-iniziato', 'RSVP iniziato'), { once: true });
+
+    const RSVP_EMAIL = 'salvo.cannata95@gmail.com';
+
+    document.getElementById('rsvpForm').addEventListener('submit', async e => {
+      e.preventDefault();
+      const btn = document.getElementById('submitBtn');
+      const check = document.getElementById('checkmark');
+      const status = document.getElementById('status');
+      
+      const raw = new FormData(e.target);
+      const yes = raw.get('attendance').startsWith('Si');
+      const n = yes ? parseInt(raw.get('guests') || '1', 10) : 0;
+
+      const mail = new FormData();
+      const nome = (raw.get('name') || '').trim();
+
+      mail.set('Nome', nome);
+      mail.set('Telefono', raw.get('phone') || 'Non indicato');
+      mail.set('Presenza', yes ? '\u2705 S\u00ec, ci sar\u00e0' : '\u274c No, non potr\u00e0 esserci');
+
+      if (yes) {
+        mail.set('Partecipanti', String(n));
+        for (let i = 1; i <= n; i++) {
+          const menu = raw.get('guest_menu_' + i) || 'Non indicato';
+          const needsSeggiolone = menu === 'Men\u00f9 bambino' || menu === 'Neonato';
+          const parti = [
+            raw.get('guest_name_' + i) || 'Nome non indicato',
+            menu
+          ];
+          if (needsSeggiolone) {
+            parti.push('Seggiolone: ' + (raw.get('guest_seggiolone_' + i) || 'Non indicato'));
+          }
+          const allergie = (raw.get('guest_allergy_' + i) || '')
+		  .split(/[\r\n]+/).map(x => x.trim()).filter(Boolean)
+		  .reduce((txt, riga) => !txt ? riga : txt + (/[.!?,;:]$/.test(txt) ? ' ' : ', ') + riga, '');
+		  parti.push('Allergie/intolleranze: ' + (allergie || 'Nessuna'));
+          mail.set('Ospite-' + i, parti.join('  \u2022  '));
+        }
+        mail.set('Trasporto', raw.get('transport') || 'Non indicato');
+      }
+
+      mail.set('Messaggio', (raw.get('notes') || '').trim() || 'Nessun messaggio');
+
+      mail.set('_subject', '\ud83d\udc8d RSVP: ' + nome + ' \u2013 ' + (yes ? 'Ci sar\u00e0 (' + n + (n === 1 ? ' persona)' : ' persone)') : 'Non potr\u00e0 esserci'));
+      mail.set('_template', 'box');
+      mail.set('_captcha', 'false');
+      mail.set('_cc', 'alessiasalvato96@gmail.com');
+
+      btn.disabled = true;
+      btn.textContent = 'Invio in corso...';
+      status.textContent = '';
+
+      try {
+        const res = await fetch('https://formsubmit.co/ajax/' + RSVP_EMAIL, {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: mail
+        });
+        
+        if (!res.ok) throw new Error('invio fallito');
+        
+		track(yes ? 'rsvp-invitato-presente' : 'rsvp-invitato-assente', yes ? 'RSVP inviato: Ci sarà' : 'RSVP inviato: Non ci sarà');
+		
+        btn.textContent = 'Invia risposta';
+        check.classList.remove('hidden');
+       } catch (err) {
+        btn.disabled = false;
+        btn.textContent = 'Invia risposta';
+		track('rsvp-errore-invio', 'RSVP errore invio');
+        status.textContent = "Si è verificato un errore durante l'invio, riprova tra poco.";
+      }
+    });
+
+    (function () {
+      const navLinks = Array.from(document.querySelectorAll('.links a[href^="#"]'));
+      const items = navLinks
+        .map(a => ({ link: a, section: document.querySelector(a.getAttribute('href')) }))
+        .filter(x => x.section);
+      const offset = 120;
+
+      function updateActive() {
+        let current = null;
+        const atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4;
+
+        if (atBottom) {
+          current = items[items.length - 1];
+        } else {
+          items.forEach(x => {
+            if (x.section.getBoundingClientRect().top <= offset) current = x;
+          });
+        }
+
+        items.forEach(x => {
+          const on = x === current;
+          x.link.classList.toggle('active', on);
+          if (on) x.link.setAttribute('aria-current', 'true');
+          else x.link.removeAttribute('aria-current');
+        });
+      }
+
+      window.addEventListener('scroll', updateActive, { passive: true });
+      window.addEventListener('resize', updateActive);
+      updateActive();
+    })();
+
+    document.querySelector('.brand').addEventListener('click', e => {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      history.replaceState(null, '', location.pathname);
+    });
+
+    window.addEventListener('load', () => document.documentElement.classList.add('smooth'));
+  </script>
+</body>
+</html>
